@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <Title>Final Product</Title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+    <style>
+        body{
+            margin: 0%;
+            
+        }
+       .busIcon{
+           width: 15%;
+           height: 15%;
+           margin-left: 85%;
+           margin-top: 20%;
+           
+       }
+       .map{
+           position: absolute;
+           width: 70%;
+           height: 55%;
+           margin-left: 30%;
+           margin-top: 5%;
+           transform: rotate(10deg);
+
+       }
+       h1{
+        font-family: "Monaco";
+        margin-left: 2%;
+       }
+       p{
+        font-family: "Monaco";
+        margin-left: 2%;
+       }
+
+       .paragraphTag{
+           position:absolute;
+           font-family: "Monaco";
+           margin-top: 28%;
+           margin-bottom: 0%;
+          
+           font-size: 120%;
+       }
+       
+       
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+        <a class="title" href="MainPage.html">Back to Main</a>
+        <a  href="DispatcherLogin.html">Dispatcher Login</a>
+        <a href="aboutAlg.html">About the algorithm</a>
+        <a class="active" href="busRoutes.html">Bus Routes</a>
+        <a href="/users/login.html">Reserve a Ride</a>
+    </div>  
+        <img class = "map" src="/static/VTMap.svg">
+        <h1>Bus Info:</h1>     
+        
+
+        <p>Taking the bus is for everyone!</p>
+        <p>The busline runs daily, 7 days a week</p>
+        
+        <p class="paragraphTag">Click the bus icon to the right for more information on the bus routes:</p>
+        
+        
+        
+        <a href="https://www.vttranslines.com/bus-schedules/">
+        <img src="/static/busIcon.png" class = "busIcon">
+        </a>
+
+        
+    
+
+</body>
+
+
+
+</html>

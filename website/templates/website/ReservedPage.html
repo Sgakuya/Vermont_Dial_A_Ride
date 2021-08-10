@@ -1,0 +1,62 @@
+<html>
+    <head>
+        {% load static %}
+	    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+        <title>Reserved Page</title>
+        <style>
+            .returnbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+                color: rgb(253, 253, 253);
+            }
+            body{
+             width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden; 
+        }
+        </style>
+      </head>
+<body style = "text-align: center;">
+    <div style = "text-align: unset;" class="bar">
+        <a class="title" href="">Dial a Ride Algorithm</a>
+        <a  href="DispatcherLogin.html">Dispatcher Login</a>
+        <a href="aboutAlg.html">About the algorithm</a>
+        <a href="busRoutes.html">Bus Routes</a>
+        <a href="/users/login.html">Login</a>
+    </div>
+    
+<h1>Thank you for submitting your request!</h1> <br>
+
+
+    <script type="text/javascript">
+        const requests = JSON.parse(localStorage.getItem('RequestList'));
+        const requestList = requests[requests.length-1];
+        document.writeln("The List of requests you have submitted: " + "<br>" + "<br>");
+
+        for(let i =0; i<requestList.length;i++){
+            let request = requestList[i];
+            document.write("Request "+ (i+1) + "<br>");
+            document.writeln ('Your starting position is: ' + request.startPos + "<br>");
+            document.writeln ('Your ending position is: ' + request.finishPos + "<br>");
+            document.writeln (rMethod(request.method) + request.hour + ':' + request.minute + ' ' + request.tod + "<br>"+ "<br>");
+
+        }
+
+        function rMethod(m){
+            if(m=='Pick Up Time'){
+                return 'Your trip will start at: ';
+            }
+            return 'You wish to arrive before: '
+        }
+
+    </script>
+
+<a href= "UserInterface.html"><button type="button" class="returnbtn">Go Back</button></a>
+
+
+
+</body>
+</html>

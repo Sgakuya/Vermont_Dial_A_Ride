@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User</title>
+        {% load static %}
+	    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+    </head>
+    <body>
+        <div class="bar">
+            <a class="title" href="/website/MainPage.html">Back to Main</a>
+            <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
+            <a href="/website/aboutAlg.html">About the algorithm</a>
+            <a href="/website/busRoutes.html">Bus Routes</a>
+            <a class ="active" href="login.html">Login</a>
+        </div>
+
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+    
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </body>
+</html>

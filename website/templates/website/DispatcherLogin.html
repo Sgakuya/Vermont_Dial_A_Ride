@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+	<link rel="stylesheet" href="{% static 'barStyle.css'%}">
+  <title>DispatcherLogin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  
+  margin:0%;
+}
+
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.loginButton {
+  background-color: #000201;
+  color: rgb(227, 241, 22);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.returnbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  color: rgb(253, 253, 253);
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.subaru {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .returnbtn {
+     width: 100%;
+  }
+
+  
+}
+</style>
+</head>
+<body>
+
+    <div class="bar">
+      <a class="title" href="MainPage.html">Back to Main</a>
+      <a class="active" href="DispatcherLogin.html">Dispatcher Login</a>
+      <a href="aboutAlg.html">About the algorithm</a>
+      <a href="busRoutes.html">Bus Routes</a>
+      <a href="/users/login.html">Login</a>
+    </div>
+    
+<h2>Dispatcher Login</h2>
+
+<form>
+  <div class="imgcontainer">
+    <img src="/static/Prius.jpeg" alt="Prius" class="subaru">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username:</b></label>
+    <input type="text" id="username" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password:</b></label>
+    <input type="password" id = "password" placeholder= "Enter Password" name="psw" autocomplete="off" required>
+   
+   
+    <input type="button" class = "loginButton" value ="Login" onclick="javascript:validate()"/>
+    
+  
+    
+    
+<!-- label allows user to click on the remember me words -->
+    <label> 
+      <input type="checkbox" id="rememberMe"> Remember me
+    </label>
+
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <a href= MainPage.html><button type="button" class="returnbtn">Go Back</button></a>
+   
+  </div>
+</form>
+
+<script src="/static/password.js"></script>
+
+</body>
+</html>

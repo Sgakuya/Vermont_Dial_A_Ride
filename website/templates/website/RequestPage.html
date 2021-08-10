@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+    <title>Request List</title>
+    <style>
+    
+    .tableContent{
+        width: 90%;
+        margin:25px 0;
+        margin-left: 2%;
+        border-collapse:collapse;
+        font-family: "Monaco";
+        font-size: 0.8em;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .tableContent thead tr{
+        color: white;
+        background: #333333;
+        padding: 10% 10%;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .tableContent th,
+    .tableContent td{
+        text-align: left;
+        padding: 12px 0px;
+    }
+
+    .tableContent tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .tableContent tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    .tableContent tbody tr:last-of-type{
+        border-bottom: 2px solid #333333;
+    }
+
+    .topLeft{
+        border-top-left-radius: 1%;
+    }
+
+    .topRight{
+        border-top-right-radius: 1%;
+    }
+    
+    .delete{
+    width: 70%;
+    /* padding: 12px 20px; */
+    
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: red;
+    color:white;
+    cursor: pointer;
+    }
+
+    .delete::before{
+        content: '';
+	    z-index: -1;
+	    background: #e7e7e7;
+	    -webkit-clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+	    clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+	    transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
+    }
+
+    .delete:hover{
+        background-color: darkred;
+    }
+
+    h2{
+        margin-left: 2%;
+        font-family: "Monaco";
+        text-decoration: underline;
+    }
+
+    p{
+        margin-left: 2%;
+        font-family: "Monaco";
+    }
+
+    h4{
+        font-family: "Monaco";
+        color: #dddddd;
+    }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="MainPage.html">Main Page</a></li>
+        <li><a href="RequestPage.html">View All The Requests</a></li>
+        <li><a href="simulation.html">Run Simulation</a></li>
+        <li><a href="#Arrange">Get Schedule</a></li>
+      </ul>
+      <p></p>
+  
+    <h2>List of Requests From DataBase:</h2>
+    <ul>
+        {% for Ride in Rides %}
+            <li style="float:none"><h4>Ride: {{ Ride.origin }} to {{ Ride.destination }} at {{ Ride.pickTime }}</h4></li>
+        {% endfor %}
+    </ul>
+
+    <p></p>
+  
+    <h2>List of Requests From Local Storage:</h2>
+
+      <!-- Table with just the headers -->
+    <table class = "tableContent" id="table">
+        <thead>
+            <th>Request #</th>
+            <th>Starting Position</th>
+            <th>Finishing Position</th>
+            <th>Pick Up Time</th>
+            <th>Drop Off Time</th>
+            <th></th>
+        </thead>
+       <tbody>
+            <tr>
+            </tr>        
+            </tbody>
+    </table>
+    
+    <p>Currently, we do not delete the element from localstorage, just from the screen</p>
+
+
+  <script>
+        var arr = new Array();
+        
+        function getData(){
+            var str = localStorage.getItem("RequestList");
+            if(str != null){
+                arr = JSON.parse(str);
+            }
+           //console.warn(arr);
+        }
+
+        function showData(){
+            getData();
+            //console.warn(arr);
+
+            var counter = 1;
+
+            var table = document.getElementById("table");
+            for(let i = 0; i<arr.length; i++){
+                for(let j = 0; j<arr[i].length; j++){
+                    var r = table.insertRow();
+                    var requestNum = r.insertCell();
+                    var startPosition = r.insertCell();
+                    var finishPosition = r.insertCell();
+                    var pickTime = r.insertCell();
+                    var finishTime = r.insertCell();
+                    var d = r.insertCell();
+
+
+                    requestNum.innerHTML = counter;
+                    startPosition.innerHTML += arr[i][j].startPos;
+                    finishPosition.innerHTML += arr[i][j].finishPos;
+                    pickTime.innerHTML += Math.floor(arr[i][j].pickTime/60) + ':' + ((arr[i][j].pickTime%60 < 10) ? ("0" + arr[i][j].pickTime%60) : arr[i][j].pickTime%60);
+                    finishTime.innerHTML += Math.floor(arr[i][j].finishTime/60) + ':' + ((arr[i][j].finishTime%60 < 10) ? ("0" + arr[i][j].finishTime%60) : arr[i][j].finishTime%60);
+                    d.innerHTML += '<button class="delete" onclick="deleteRow(this)">DELETE</button>';
+                    
+                    counter ++;
+                }
+            }
+        }
+
+        showData();
+
+        function reservedMethod(m){
+            if(m=='Pick Up Time'){
+                return ' Pick up time: ';
+            }
+            return ' Drop off time: '
+        }
+
+        function deleteRow(o) {    
+            var p=o.parentNode.parentNode;
+            p.parentNode.removeChild(p);
+        }
+
+        function deleteFromStorage(n){
+            var count = 0;
+            for(let i = 0; i<arr.length; i++){
+                for(let j = 0; j<arr[i].length; j++){
+                        if(count == n) arr[i].splice(j,1);
+                }
+            }
+            localStorage.setItem('RequestList',JSON.stringify(arr));
+        }
+
+        function detele(o,n){
+            deleteRow(o);
+            deleteFromStorage(i,j);
+        }
+        
+        </script>
+</body>
+
+</html>

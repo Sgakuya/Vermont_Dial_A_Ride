@@ -1,0 +1,80 @@
+body {
+    color: #5cb85c;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .fa-map-pin,
+  .fa-dot-circle,
+  .fa-clock,
+  .fa-calendar-alt {
+    color: #5cb85c;
+  }
+
+  .clickMe{
+    font-size: 0.7em;
+    margin: 0%;
+    margin-left: 33%;
+
+  }
+
+  
+  /*Jumbotron*/
+  .jumbotron {
+    background-color: transparent;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .jumbotron h3 {
+    letter-spacing: 2.5px;
+    font-size: 3.5em;
+  }
+  
+  .jumbotron h3,
+  .jumbotron p {
+    text-align: center;
+  }
+
+  /*map*/
+#googleMap {
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 40%;
+    width: 55%;
+    height: 444px;
+
+    color: black;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 2px;
+
+  }
+
+ 
+  /* So the search bar will work with the map*/
+  #from,
+  #to,
+  #pickTime,
+  #requestMethod,
+  #pickDate{
+      width: 40%;
+      
+  }
+  
+  /*output box*/
+  #output {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px auto;
+    margin: 0%;
+    margin-top: 0.5%;
+  }
+  
+  #mode {
+    color: black;
+  }
+
+  .center{
+      text-align: center;
+      margin:auto;
+  }

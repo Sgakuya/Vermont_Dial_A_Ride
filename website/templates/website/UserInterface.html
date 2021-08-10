@@ -1,0 +1,116 @@
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title>Submit Your Request</title>
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+</head>
+
+<body>
+    <div class="bar">
+        <a class="title" href="/website/MainPage.html">Back to Main</a>
+        <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
+        <a href="/website/aboutAlg.html">About the algorithm</a>
+        <a href="/website/busRoutes.html">Bus Routes</a>
+        <a class ="active" href="/users/login.html">Logout</a>
+    </div>
+  
+    <h1>Welcome, {{ request.user }}</h1>
+    <!-- using bootstrap for styling -->
+
+        <div class="jumbotron"> 
+            <div class="container-fluid">
+                <!-- input h1 and p title here  -->
+                <h1>Create Your Ride Here:</h1>
+                <div id="googleMap"></div>
+                
+                <form class="form-horizontal" action="{% url 'user_view' %}" method="post">
+                  {% csrf_token %}
+                    <!-- for the start pos -->
+                    <div class="form-group">
+                        <label for="from"><i class="far fa-dot-circle"></i></label>
+                        <input type="text" id="from" name="from" placeholder="Origin" class="form-control">
+                           
+                    </div>
+                    <!-- For the destination -->
+                    <div class="form-group">
+                        <label for="to"><i class="fas fa-map-pin"></i></label>
+                        <input type="text" id="to" name="to" placeholder="Destination" class="form-control">
+                    </div>  
+                    <!-- For the type of pickup/dropoff -->
+                    <div class = "form-group">
+                            <label for="ReserveMethod" class="titleText">Reserving Method</label><br>
+                            <select class="form-control" name="method" id="requestMethod">
+                              <option disabled selected value> -- select an option -- </option>
+                              <option value="Pick Up Time">Pick Up Time</option>
+                              <option value="Drop Off Time">Drop Off Time</option>
+                           </select>
+                    
+                    <!--for the date  -->
+                    <div class="form-group">
+                        <label for="ReserveMethod" class="titleText">Reserving Date</label><br>
+                        <input type="number" id="Month" name="Month" placeholder="Enter Month" style="margin-right: 60%;">
+                        <input type="number" id="Date" name="Date" placeholder="Enter Date" style="margin-right: 60%;">
+                    </div> 
+                        
+                    </div>
+                    <!-- for the pickup/dropoff time -->
+                    <div class="form-group" style="margin-right: 82%;">
+                            <label for="pickTime"><i class="far fa-clock"></i></label>
+                            <label for="pickTime" class="clickMe">Click Me!</label>
+                            <select name="hours" class= "hrs" id="hours">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select name="minutes" class="minutes" id="minutes">
+                                <option value="00">00</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                            </select>
+                            <select name="tod" class="am" id="tod">
+                                <option value="AM">A.M.</option>
+                                <option value="PM">P.M.</option>
+                            </select>
+                    </div> 
+
+                    <button class="btn btn-success btn-lg" onclick="calcRoute();">Confirm Request<i class="far fa-paper-plane"></i></button>
+                    <button type="submit" class="btn btn-success btn-lg">Submit Your Request<i class="far fa-paper-plane"></i></button>
+                </form>
+                
+                
+                    
+            </div>
+            
+            
+
+            <div id="output"></div>
+
+        
+        </div>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
+
+    
+    <script src="{% static 'calcRoute.js' %}"></script>
+
+</body>
+</html>

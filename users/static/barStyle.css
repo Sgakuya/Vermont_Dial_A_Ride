@@ -1,0 +1,42 @@
+.bar {
+    margin:0%;
+    background-color: darkgreen;
+    overflow: hidden;
+    opacity: 0.85;
+    }
+
+
+    .bar a {
+        float: right;
+        color:white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+    .bar a:hover {
+        background-color: white;
+        color: forestgreen;
+    }
+
+    .bar a.title:hover{
+        background-color: black;
+        color: white;
+    }
+    a:nth-of-type(1){
+        background-color: black;
+        
+    }
+
+    .bar a.active {
+        background-color: white;
+        color: forestgreen;
+        }
+
+    .bar a.active:hover{
+        background-color: forestgreen;
+        color: white;
+    }
+    .bar a.title{
+        float:left;
+    }

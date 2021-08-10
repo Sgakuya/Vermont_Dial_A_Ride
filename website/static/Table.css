@@ -1,0 +1,98 @@
+    
+    .tableContent{
+        width: 90%;
+        margin:25px 0;
+        margin-left: 2%;
+        border-collapse:collapse;
+        font-family: "Monaco";
+        font-size: 0.8em;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .tableContent thead tr{
+        color: white;
+        background: #333333;
+        padding: 10% 10%;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .tableContent th,
+    .tableContent td{
+        text-align: left;
+        padding: 12px 0px;
+    }
+
+    .tableContent tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .tableContent tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    .tableContent tbody tr:last-of-type{
+        border-bottom: 2px solid #333333;
+    }
+
+    .topLeft{
+        border-top-left-radius: 1%;
+    }
+
+    .topRight{
+        border-top-right-radius: 1%;
+    }
+    
+    .delete{
+    width: 70%;
+    /* padding: 12px 20px; */
+    
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: red;
+    color:white;
+    cursor: pointer;
+    }
+
+    .delete::before{
+        content: '';
+	    z-index: -1;
+	    background: #e7e7e7;
+	    -webkit-clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+	    clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+	    transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
+    }
+
+    .delete:hover{
+        background-color: darkred;
+    }
+
+    h2{
+        margin-left: 2%;
+        font-family: "Monaco";
+    }
+    .submitButton{
+            width: 10%;
+            padding: 6px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 2%;
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        .submitButton:hover{
+            background-color: #111111;
+        }
+        p{
+            margin-left: 2%;
+            font-family: "Monaco";
+            width: 35%;
+        }

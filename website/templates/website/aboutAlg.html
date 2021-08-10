@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'barStyle.css'%}">
+	<title>Introduction to the Algorithm</title>
+	<style>
+	body{
+  		background:url(https://www.interstate-guide.com/wp-content/uploads/routes/189/i-089-s-at-i-189-1.jpg);
+  		background-repeat:no-repeat;
+  		background-size:cover;
+		margin:0%;
+	
+	}
+
+
+	
+		
+		h1{
+			font-family: "Monaco";
+			color: black;
+			margin-left:5%;
+			margin-right: 5%;
+		}	
+
+		p{
+			font-family: "Monaco";
+			margin-left:5%;
+			margin-right: 55%;
+			background-color:rgba(173,216,230, 0.5);
+
+		}		
+
+
+		h4{
+			color:yellow;
+			text-transform: uppercase;
+			margin-left:5%;
+			margin-right: 5%;
+		}
+
+		br{
+			background:white;
+		}
+		
+
+
+	</style>
+</head>
+<body>
+
+		<div class="bar">
+			<a class="title" href="MainPage.html">Back to Main</a>
+			<a  href="DispatcherLogin.html">Dispatcher Login</a>
+			<a class ="active" href="aboutAlg.html">About the algorithm</a>
+			<a href="busRoutes.html">Bus Routes</a>
+			<a href="/login.html">Login</a>
+		</div>
+
+		
+<h4>Hello There! And thank you for showing interest in how our algorithm works!</h4>
+	
+	<h1>How it works:</h1>
+
+	
+	<p>Greedy Algorithm that sorts requests by a numerical “value” assigned to the request. This value is reflective of the desirability, or the ease of which the driver can complete the request minimizing time and distance. These values are unique to each request, assigned based on their location relative to the driver, the ending time of their request, and the distance to travel to other requests following the fulfillment.
+		
+	<br> <br>We call our algorithm a greedy algorithm, as it selects the request with the lowest f value, serves it, then recomputes new f values for all other requests based on the updated time and position of the driver. 
+	
+	<br> <br> Our algorithm runs in a fraction of the time it takes to compute the optimal driver route, with near perfect results. However, our algorithm often performs better than the optimal route through adding flexible pickup times and ridesharing.
+	
+	<br> <br> Our algorithm accounts for deadtime in between serving requests, meaning in can pick up riders up to 30 minutes in advance, time permitting. In this deadtime between requests, our algorithm looks for rides that can potentially be shared based on starting and finishing destinations!</p>
+	
+
+	
+
+</body>
+</html>

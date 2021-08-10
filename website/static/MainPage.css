@@ -1,0 +1,38 @@
+body{
+    margin:0%;
+    background-image: url(test.jpeg);
+    /* to fill the screen */
+    background-size:120%;
+    background-repeat: no-repeat;
+    
+}
+.p1{
+
+color: white;
+letter-spacing: 3px;
+font-family:fantasy;
+font-size: 50px;
+margin-left: 7%;
+margin-top: 15%;
+margin-bottom: 0%;
+
+}
+.p2{
+   
+   color: white;
+   font-size: 50px;
+   letter-spacing: 3px;
+   font-family:fantasy;
+   margin-left: 11%;
+   margin-top: 0%;
+}
+.p3{
+  
+   font-family:fantasy;
+   color: white;
+   font-size: 18px;
+
+   letter-spacing: 2px;
+   margin-top: 2%;
+   margin-left: 3%;
+}

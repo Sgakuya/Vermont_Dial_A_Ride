@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+    <style>
+        
+        .submitButton{
+            width: 10%;
+            padding: 6px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 2%;
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        .submitButton:hover{
+            background-color: #111111;
+        }
+
+        input[type=number]{
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 2%;
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        input[type=number]:hover{
+            background-color: #111111;
+        }
+
+        p{
+            margin-left: 2%;
+            font-family: "Monaco";
+            width: 100%;
+        }
+
+
+    </style>
+    <title>Simulation On Random Requests</title>
+    <link rel="stylesheet" href="DispatcherStyle.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="MainPage.html">Main Page</a></li>
+        <li><a href="RequestPage.html">View All The Requests</a></li>
+        <li><a href="simulation.html">Run Simulation</a></li>
+        <li><a href="#Arrange">Get Schedule</a></li>
+      </ul>
+
+      <p>How many random requests do you want to generate: <br></p>
+      <input type="number" name="num" id="num">
+      <button id = "create" class="submitButton">Create</button>
+      <button id = "run" class="submitButton">Run</button>
+
+      <p id="demo"></p>
+
+      <h2>Served Requests:</h2>
+      <table class = "tableContent" id="table">
+          <thead>
+              <th>Request #</th>
+              <th>Starting Position</th>
+              <th>Finishing Position</th>
+              <th>Pick Up Time</th>
+              <th>Finish Time</th>
+              <th>Shifted</th>
+          </thead>
+        <tbody id="body"> 
+              <tr>
+              </tr>        
+        </tbody>
+      </table>
+
+      <p id="ServeList"><br><br></p>
+
+      <script type="module" src="/static/SimulateRandom.js"></script>
+
+</body>
+
+</html>
