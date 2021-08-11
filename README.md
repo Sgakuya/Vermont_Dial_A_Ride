@@ -7,6 +7,7 @@
   # When we’re ready to publish our local commits to Github, we can run git push and when we go to GitHub in our web browser, our changes will be reflected.
   # If you’ve only changed existing files and not created new ones, instead of using [git add .] and then [git commit]..., 
   we can condense this into one command: [git commit -am "some message"]. This command will commit all the changes that you made.
+  # Use [git pull] to get access to the latest version
   
   
   
