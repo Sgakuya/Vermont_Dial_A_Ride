@@ -8,6 +8,11 @@
   # If you’ve only changed existing files and not created new ones, instead of using [git add .] and then [git commit]..., 
   we can condense this into one command: [git commit -am "some message"]. This command will commit all the changes that you made.
   # Use [git pull] to get access to the latest version
+  # git reset --hard <commit>
+  # git reset --hard origin/master
+  # git branch --> Tell me the current branch
+  # [git checkout -b style] --> switched to the new branch
+  # -b means a new branch
   
   
   
