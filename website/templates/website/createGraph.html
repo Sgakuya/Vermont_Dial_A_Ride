@@ -20,7 +20,9 @@
                 
         
                 <div id= "btn">
+                    <!-- First button that loads all missed weights into local storage -->
                 <button class="btn btn-success btn-lg " onclick="createGraph();">Create Graph</button>
+                <!-- Second button that then runs until the localstorage containing "missedWeights" is empty -->
                 <button class="btn btn-info btn-lg" id = "reload" onclick="addRefresh();">Save and refresh</button>
                 </div>
             </div>
@@ -28,6 +30,7 @@
             <div id ="progress">
                 
             </div>
+            <!-- Google map -->
             <div id="googleMap"></div>
             <div id="output"></div>
 
@@ -36,21 +39,27 @@
         
         </div>
     
+        <!-- Loading necessary js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
     <script src="{% static 'graphEdge.js' %}"></script>
     <script src= "{% static 'graph.js' %}"></script>
 
+        <!-- This script will run when the page is loaded, so we can continually run
+            until the local storage is empty, and the program will continue to refresh
+        -->
        <script>
            
            var satisfied = 0;
            var total = 0;
 
+        // Checking localstorage
            if(JSON.parse(localStorage.getItem("count"))){
             satisfied = JSON.parse(localStorage.getItem("edgeWeight")).length;
            }
            if(localStorage.getItem("count")){
             total = localStorage.getItem("count");
            }
+           //Loading the progress statement
            progress.innerHTML = " Satisfied: " + satisfied + "/" + total + " Api Requests. ";
           
             
@@ -83,6 +92,7 @@
                 }
             }
 
+            //The first time the user visits page, this 
             function createGraph(){
 
                 var g = new Graph(map,directionsService,directionsDisplay);

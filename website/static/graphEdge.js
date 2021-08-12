@@ -1,4 +1,8 @@
-
+/*
+    graphEdge class
+    Stores a starting location, a finishing position, and the travel
+    time from start to finish
+*/
 var graphEdge = /** @class */ (function () {
     // do i need to pass in g?
         function graphEdge(s, f, weight) {
@@ -7,7 +11,7 @@ var graphEdge = /** @class */ (function () {
             && ((typeof weight === 'number' || weight ===null)) )
             {
                 var __args = arguments;
-    
+                    //set variables
                     this.startPos = s;
                     this.finishPos = f;
                     this.edgeWeight = weight;
@@ -19,12 +23,14 @@ var graphEdge = /** @class */ (function () {
                     
         }
 
+        //Check to see if this graphEdge equals graphEdge lr
         graphEdge.prototype.equals = function (lr) {
             if ((this.startPos === lr.startPos) && (this.finishPos === lr.startPos) && this.edgeWeight === lr.edgeWeight)
                 return true;
             return false;
         };
 
+        //toString function
         graphEdge.prototype.toString = function () {
             return ("StartPos: " + this.startPos + ", FinishPos: " + this.finishPos + ", Travel Time: " + this.edgeWeight);
         };

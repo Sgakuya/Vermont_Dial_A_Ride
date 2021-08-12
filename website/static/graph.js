@@ -1,8 +1,11 @@
+// Local variables for storage
 var edgeWeights = [];
 var missed = [];
 var edges = [];
 var delayFactor = 0;
 
+//Checking to see if there have been previously satisfied requests in the local
+//storage
 var satisfied = 0;
 if(JSON.parse(localStorage.getItem("edgeWeight"))){
     satisfied = JSON.parse(localStorage.getItem("edgeWeight")).length;
@@ -10,7 +13,12 @@ if(JSON.parse(localStorage.getItem("edgeWeight"))){
 
 var total = 0;
 
-
+/*
+    Graph class, takes
+    map = google map api object
+    vtMap = actual graph (Not currently used?)
+    directionsService and directionDisplay = google map api objects
+*/
 var Graph = /** @class */ (function () {
     function Graph(m, s, d) {
         this.map = m;
@@ -18,6 +26,9 @@ var Graph = /** @class */ (function () {
         directionsService = s;
         directionsDisplay = d;
         
+
+        //List of locations that we plan on loading into our graph
+        //STILL NEED TO INPUT MULTIPLE LOCATIONS WITHIN BURLINGTON, MIDD, etc.
         this.locations = 
         [
             "Addison, VT, USA",
@@ -98,43 +109,12 @@ var Graph = /** @class */ (function () {
        
         setUp(this.locations);
     
-            // for(var i = 0; i < this.locations.length; i++){
-            //     for(var j = 0; j < this.locations.length; j++){
-            //         if(i==j){
-            //             console.log("I and J are matching:  " + i + " " + j);
-            //         }else{
-            //             total++;
-            //             graphAdd(this.locations[i],this.locations[j]);
-            //             //this.addEdge((function (m, k) { return m[k] === undefined ? null : m[k]; })(this.vtMap, this.locations[i]), (function (m, k) { return m[k] === undefined ? null : m[k]; })(this.vtMap, this.locations[j]), 100);
-            //             //console.log("edge added between: " + this.locations[i] + " and " + this.locations[j] + " of ");
-            //         }
-            //     }
-            // }
-
-            
-           
-
-
-            // for(var i = 0; i < 4; i++){
-            //     for(var j = 0; j < 3; j++){
-            //         if(i==j){
-            //             console.log("I and J are matching:  " + i + " " + j);
-            //         }else{
-            //             total++;
-            //             graphAdd(this.locations[i],this.locations[j]);
-            //             //this.addEdge((function (m, k) { return m[k] === undefined ? null : m[k]; })(this.vtMap, this.locations[i]), (function (m, k) { return m[k] === undefined ? null : m[k]; })(this.vtMap, this.locations[j]), 100);
-            //             //console.log("edge added between: " + this.locations[i] + " and " + this.locations[j] + " of ");
-            //         }
-            //     }
-            // }
-
-            
-        
-
-
+      
         
     }
 
+    //Hardcoded bus routes and their times. 
+    //The bus route travel times are taken from: https://www.vttranslines.com/bus-schedules/
     Graph.prototype.addBus = function () {
         var line1 = new BusPath();
         line1.addRoute("Burlington", "BTV", 298, 313);
@@ -210,13 +190,21 @@ var Graph = /** @class */ (function () {
         }
         return res;
     };
+    //Adds a new vertex to the graph
     Graph.prototype.addVertex = function (n, p) {
                 (this.vtMap[n] = new Vertex(n, p));
     };
+    //adds an edge between two locations
+    /*
+        each location will have an array of edgeweights based on a key
+        the key will be equal to the name of the destination in the array
+    */
     Graph.prototype.addEdge = function (v1, v2, weight) {
         var edge = new Edge(v1.name, v2.name, weight);
                 (v1.edges[v2.name] = edge);
     };
+
+    //finds and returns the edgeweight from location s1 to s2
     Graph.prototype.getEdgeWeight = function (s1, s2) {
         if (s1 === s2) {
             return 0;
@@ -225,7 +213,7 @@ var Graph = /** @class */ (function () {
     };
 
  
-
+    //Prints the contents of the graph in the console
     Graph.prototype.printGraph = function () {
 
             var arr = /* entrySet */ (function (o) {
@@ -242,6 +230,7 @@ var Graph = /** @class */ (function () {
         
     };
 
+    //Checks to see if the location has a bus station attached with it
     Graph.prototype.isBusStation = function (location) {
         for (var i = 0; i < this.busStations.length; i++) {
             var s = this.busStations[i];
@@ -264,6 +253,11 @@ var Graph = /** @class */ (function () {
 }());
 Graph = Graph;
 Graph["__class"] = "Graph";
+
+/*
+    Vertex class, takes in a name (location) and a position
+    Initialized with an empty array of edges
+*/
 var Vertex = /** @class */ (function () {
     function Vertex(n, p) {
         if (this.name === undefined) {
@@ -299,6 +293,11 @@ var Vertex = /** @class */ (function () {
 }());
 Vertex = Vertex;
 Vertex["__class"] = "Vertex";
+
+/*
+    Edge class, takes a source, a destination, and stores a weight. 
+    Only used for storage
+*/
 var Edge = /** @class */ (function () {
     function Edge(s, d, w) {
         if (this.source === undefined) {
@@ -321,6 +320,10 @@ var Edge = /** @class */ (function () {
 }());
 Edge = Edge;
 Edge["__class"] = "Edge";
+
+/*
+    Bus path class
+*/
 var BusPath = /** @class */ (function () {
     function BusPath() {
         if (this.BusRoutes === undefined) {
@@ -343,6 +346,11 @@ var BusPath = /** @class */ (function () {
 }());
 BusPath = BusPath;
 BusPath["__class"] = "BusPath";
+
+/*
+    Busroute class, stored in the busPath, takes a starting position, a
+    destination, a departure time, and an arrival time
+*/
 var BusRoute = /** @class */ (function () {
     function BusRoute(s, d, depart, arrive) {
         if (this.source === undefined) {
@@ -372,7 +380,8 @@ var BusRoute = /** @class */ (function () {
     return BusRoute;
 }());
 
-
+//Sets up the local storage and stores all the missed graph edges in
+//a local storage option called "missedWeights"
 function setUp(locations){
     for(var i =0; i<locations.length; i++){
         for(var j =0; j<locations.length; j++){
@@ -390,6 +399,9 @@ function setUp(locations){
     localStorage.setItem("count", total);
 }
 
+//For the save and refresh button in the html
+//Adds the first 10 locations if they are available, stores them and the weights
+// in the local storage, then conti
 function addRefresh(){
     
     if(localStorage.getItem("missedWeights")){
@@ -411,7 +423,7 @@ function addRefresh(){
     setTimeout(
         function(){
             window.location.reload(true);
-        },2000);
+        },3000);
         
     }else{
         console.log("Miss is Empty!!!")
