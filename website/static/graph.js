@@ -396,6 +396,7 @@ function setUp(locations){
     }
     localStorage.setItem("missedWeights", JSON.stringify(edges));
     localStorage.setItem("count", total);
+    total = 0;
 }
 
 //For the save and refresh button in the html
