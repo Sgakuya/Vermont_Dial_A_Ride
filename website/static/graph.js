@@ -74,7 +74,6 @@ var Graph = /** @class */ (function () {
             "Winooski, VT, USA", 
 
             // "Ripton, VT, USA"
-            
                                     ];
 
             // this.locations = 
