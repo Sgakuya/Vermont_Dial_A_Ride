@@ -47,14 +47,9 @@ function calcRoute() {
             const output = document.querySelector('#output');
             output.innerHTML = "<div class='alert-success'><i class='fas fa-shuttle-van'></i> Your Request has Been Submitted <i class='fas fa-shuttle-van'></i> <br/> From (A): " + document.getElementById("from").value + ".<br />To (B): " + document.getElementById("to").value +  ".<br />Travel Time : " + result.routes[0].legs[0].duration.text + ".</div>";
 
-            //cannot be redeclared
-            console.log(result);
-            console.log(result.routes[0]);
-            console.log(result.routes[0].legs[0]);
-            console.log(result.routes[0].legs[0].duration);
-            console.log(result.routes[0].legs[0].duration.text);
             
             
+            //taking from autofill
             const startPos = document.getElementById("from").value;
             const finishPos = document.getElementById("to").value;
             
@@ -66,7 +61,7 @@ function calcRoute() {
             }
                 
                       
-
+            //Taking all of the variables and storing them in variables
             var spl = document.getElementById("pickTime").value.split(':');
             var hrs = parseInt(spl[0]) * 60;
             var mins = parseInt(spl[1]);
@@ -77,33 +72,10 @@ function calcRoute() {
             //converting the edgeweight into a value
             const edgeWeight = Math.round((result.routes[0].legs[0].duration.value)/60);
 
-    
-            /*
-            Put the above variables into a request object and store in the database
-            */
-            
-             
-            /*
-            * This will add the double edged weight to the graph.
-            * .edgeweight.add(startpos,finishpos,edgeweight)
-            * .edgeweight.add(finishpos,finishpos,edgeweight)
-            */
-
             // g.printGraph();  
             console.log("Graph");
 
-            //create a request and store in database?
-            // const requestObj = new Request(startPos, finishPos,pickOrDropTime,requestMethod,date,edgeWeight);
             
-            // console.log(requestObj);
-
-            // console.log("StartPos: " + startPos);
-            // console.log("finishPos: " + finishPos);
-            // console.log("requestMethod: " + requestMethod);
-            // console.log("pickTime/dropTime: " + pickOrDropTime);
-            // console.log("date: " + date);
-            // console.log(result.routes[0].legs[0].duration);
-            // console.log(edgeWeight);
             
             //display route
             directionsDisplay.setDirections(result);

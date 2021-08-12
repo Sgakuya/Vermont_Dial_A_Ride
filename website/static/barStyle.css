@@ -5,7 +5,7 @@
     opacity: 0.85;
     }
 
-
+    
     .bar a {
         float: right;
         color:white;
@@ -23,11 +23,13 @@
         background-color: black;
         color: white;
     }
+    /* First a */
     a:nth-of-type(1){
         background-color: black;
         
     }
 
+    /* special bar that we are currently on */
     .bar a.active {
         background-color: white;
         color: forestgreen;
