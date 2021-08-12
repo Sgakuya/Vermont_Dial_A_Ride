@@ -2,11 +2,12 @@
 <head>
     <meta charset="utf-8"> 
     <title>Create Graph</title>
-    <link href="Css/bootstrap.min.css" rel="stylesheet"/>
+    {% load static %}
+    <link href="{% static 'bootstrap.min.css'%}" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
 </head>
 
 <body>
@@ -36,8 +37,8 @@
         </div>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
-    <script src="graphEdge.js"></script>
-    <script src= "graph.js"></script>
+    <script src="{% static 'graphEdge.js' %}"></script>
+    <script src= "{% static 'graph.js' %}"></script>
 
        <script>
            
