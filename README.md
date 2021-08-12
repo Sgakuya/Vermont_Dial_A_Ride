@@ -33,3 +33,5 @@
 # To change the database's object, edit model, and then do the following command:
 # python3 manage.py makemigrations
 # python3 manage.py migrate
+
+# Just for testing purposes
