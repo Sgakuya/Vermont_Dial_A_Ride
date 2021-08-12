@@ -2,12 +2,11 @@
 <head>
     <meta charset="utf-8"> 
     <title>Create Graph</title>
-    {% load static %}
-    <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="Css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/style.css">
 </head>
 
 <body>
@@ -25,7 +24,9 @@
                 </div>
             </div>
 
-            <div id ="progress"></div>
+            <div id ="progress">
+                
+            </div>
             <div id="googleMap"></div>
             <div id="output"></div>
 
@@ -35,11 +36,21 @@
         </div>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
-    <script src="{% static 'graphEdge.js' %}"></script>
-    <script src= "{% static 'graph.js' %}"></script>
+    <script src="graphEdge.js"></script>
+    <script src= "graph.js"></script>
 
        <script>
            
+           var satisfied = 0;
+           var total = 0;
+
+           if(JSON.parse(localStorage.getItem("count"))){
+            satisfied = JSON.parse(localStorage.getItem("edgeWeight")).length;
+           }
+           if(localStorage.getItem("count")){
+            total = localStorage.getItem("count");
+           }
+           progress.innerHTML = " Satisfied: " + satisfied + "/" + total + " Api Requests. ";
           
             
             // addRefresh();
@@ -85,7 +96,7 @@
                         // window.location.reload(true);
                     }
                     console.log(stored);
-             }, 2000);
+             }, 3000);
             }
 
         </script>
