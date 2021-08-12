@@ -4,6 +4,10 @@ var edges = [];
 var delayFactor = 0;
 
 var satisfied = 0;
+if(JSON.parse(localStorage.getItem("edgeWeight"))){
+    satisfied = JSON.parse(localStorage.getItem("edgeWeight")).length;
+}
+
 var total = 0;
 
 
@@ -14,53 +18,68 @@ var Graph = /** @class */ (function () {
         directionsService = s;
         directionsDisplay = d;
         
-        // this.locations = 
-        // ["Addison, VT, USA",
-        //  "Brandon, VT, USA",
-        //   "Bridport, VT, USA",
-        //     "Bristol, VT, USA",
-        //       "Burlington, VT, USA",
-        //        "Colchester, VT, USA",
-        //          "Cornwall, VT, USA",
-        //           "East Middlebury, Middlebury, VT, USA",
-        //            "Essex Junction, Essex, VT, USA",
-        //             "Essex, VT, USA",
-        //              "Ferrisburg, VT, USA",
-        //               "Hinesburg, VT, USA",
-        //                "Lebanon, VT, USA",
-        //                 "Leicester, VT, USA",
-        //                  "Middlebury, VT, USA",
-        //                   "New Haven, VT, USA",
-        //                    "Orwell, VT, USA",
-        //                     "Ripton, VT, USA",
-        //                      "Rutland, VT, USA",
-        //                       "Salisbury, VT, USA",
-        //                        "Shoreham, VT, USA",
-        //                         "South Burlington, VT, USA",
-        //                          "Starksboro, VT, USA",
-        //                           "Sudberry, VT, USA",
-        //                            "Vergennes, VT, USA",
-        //                             "Weybridge, VT, USA",
-        //                              "Whiting, VT, USA",
-        //                               "Williston, VT, USA",
-        //                                "Winooski, VT, USA",    
-        //                                  "Ripton, VT, USA"
-        //                             ];
+        this.locations = 
+        [
+            "Addison, VT, USA",
+            "Brandon, VT, USA",
+            "Bridport, VT, USA",
+            "Bristol, VT, USA",
 
-            this.locations = 
-            [
-                "Middlebury, VT, USA",
-                "Vergennes, VT, USA",
-                "Rutland, VT, USA",
-                "South Burlington, VT, USA",
-                "Bristol, VT, USA",
-                "Burlington, VT, USA",
-                "Salisbury, VT, USA",
-                "Shoreham, VT, USA",
-                "Addison, VT, USA",
-                "Cornwall, VT, USA",
-                "Leicester, VT, USA"
-            ];
+            //Burlington
+            "Burlington, VT, USA",
+
+
+            "Colchester, VT, USA",
+            "Cornwall, VT, USA",
+            "East Middlebury, Middlebury, VT, USA",
+            "Essex Junction, Essex, VT, USA",
+            "Essex, VT, USA",
+            "Ferrisburg, VT, USA",
+            "Hinesburg, VT, USA",
+            "Lebanon, VT, USA",
+            "Leicester, VT, USA",
+
+            //Middlebury
+            "Middlebury, VT, USA",
+            //???
+
+            "New Haven, VT, USA",
+            "Orwell, VT, USA",
+            "Ripton, VT, USA",
+            "Rutland, VT, USA",
+            "Salisbury, VT, USA",
+            "Shoreham, VT, USA",
+
+            // "South Burlington, VT, USA",
+            "South Burlington, VT, USA",
+            //????
+
+            "Starksboro, VT, USA",
+            "Sudberry, VT, USA",
+            "Vergennes, VT, USA",
+            "Weybridge, VT, USA",
+            "Whiting, VT, USA",
+            "Williston, VT, USA",
+            "Winooski, VT, USA", 
+
+            // "Ripton, VT, USA"
+            "Ripton, VT, USA"
+                                    ];
+
+            // this.locations = 
+            // [
+            //     "Middlebury, VT, USA",
+            //     "Vergennes, VT, USA",
+            //     "Rutland, VT, USA",
+            //     "South Burlington, VT, USA",
+            //     "Bristol, VT, USA",
+            //     "Burlington, VT, USA",
+            //     "Salisbury, VT, USA",
+            //     "Shoreham, VT, USA",
+            //     "Addison, VT, USA",
+            //     "Cornwall, VT, USA",
+            //     "Leicester, VT, USA"
+            // ];
 
        
 
@@ -368,6 +387,7 @@ function setUp(locations){
         }
     }
     localStorage.setItem("missedWeights", JSON.stringify(edges));
+    localStorage.setItem("count", total);
 }
 
 function addRefresh(){
@@ -484,3 +504,5 @@ function graphAdd(loc1, loc2) {
 BusRoute = BusRoute;
 BusRoute["__class"] = "BusRoute";
 
+
+// export { Graph, Vertex, Edge, BusPath, BusRoute };

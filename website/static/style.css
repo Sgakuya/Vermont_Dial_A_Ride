@@ -1,80 +1,93 @@
 body {
-    color: #5cb85c;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .fa-map-pin,
-  .fa-dot-circle,
-  .fa-clock,
-  .fa-calendar-alt {
-    color: #5cb85c;
-  }
+  color: #5cb85c;
+  font-family: "Poppins", sans-serif;
 
-  .clickMe{
-    font-size: 0.7em;
-    margin: 0%;
-    margin-left: 33%;
+}
 
-  }
+.fa-map-pin,
+.fa-dot-circle,
+.fa-clock,
+.fa-calendar-alt {
+  color: #5cb85c;
+}
 
-  
-  /*Jumbotron*/
-  .jumbotron {
-    background-color: transparent;
-    margin: 0;
-    padding: 10px;
-  }
-  
-  .jumbotron h3 {
-    letter-spacing: 2.5px;
-    font-size: 3.5em;
-  }
-  
-  .jumbotron h3,
-  .jumbotron p {
-    text-align: center;
-  }
+.clickMe{
+  font-size: 0.7em;
+  margin: 0%;
+  margin-left: 33%;
 
-  /*map*/
+}
+
+
+/*Jumbotron*/
+.jumbotron {
+  background-color: transparent;
+  margin: 0;
+  padding: 10px;
+}
+
+.btn{
+  text-align: center;
+  margin: 0%;
+}
+
+.jumbotron h3 {
+  letter-spacing: 2.5px;
+  font-size: 3.5em;
+}
+
+.jumbotron h3,
+.jumbotron p {
+  text-align: left;
+}
+
+/*map*/
 #googleMap {
-    position: absolute;
-    margin-top: 0%;
-    margin-left: 40%;
-    width: 55%;
-    height: 444px;
+/* position: absolute; */
+  margin-top: 0%;
+  margin-left: 0%;
+  width: 100%;
+  height: 400px;
 
-    color: black;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px 2px;
+  color: black;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 2px;
+}
 
-  }
 
- 
-  /* So the search bar will work with the map*/
-  #from,
-  #to,
-  #pickTime,
-  #requestMethod,
-  #pickDate{
-      width: 40%;
-      
-  }
+/* So the search bar will work with the map*/
+#from,
+#to,
+#pickTime,
+#requestMethod,
+#pickDate{
+    width: 40%;
+    
+}
+
+/*output box*/
+#output
+ {
   
-  /*output box*/
-  #output {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 20px auto;
+  margin: 0%;
+  margin-top: 0.5%;
+}
+#progress{
+  text-align: left;
+  font-size: 1.5em;
+  margin: 0%;
+}
+
+
+#mode {
+  color: black;
+}
+
+.center{
     text-align: center;
-    font-size: 1.5em;
-    margin: 20px auto;
-    margin: 0%;
-    margin-top: 0.5%;
-  }
-  
-  #mode {
-    color: black;
-  }
-
-  .center{
-      text-align: center;
-      margin:auto;
-  }
+    margin:auto;
+}
