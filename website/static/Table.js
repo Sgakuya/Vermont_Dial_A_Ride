@@ -1,3 +1,5 @@
+// Code taken and copied from elsewhere in the program for simplicity
+
 var arr = new Array();
         
 function getData(){

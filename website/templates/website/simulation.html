@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Page that allows the user to choose between simulating random requests and
+         existing requests
+    -->
     <title>Simulation Page</title>
+    
     {% load static %}
 	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
     <style>
@@ -81,6 +85,7 @@
 </head>
 
 <body>
+    <!-- Search bar -->
     <ul>
         <li><a href="MainPage.html">Main Page</a></li>
         <li><a href="RequestPage.html">View All The Requests</a></li>
@@ -88,6 +93,7 @@
         <li><a href="#Arrange">Get Schedule</a></li>
       </ul>
       
+      <!-- Button to simulate on existing requests -->
       <div>
           <a href="SimulateExisiting.html">
               <button class="existing">
@@ -96,11 +102,14 @@
             </a>
       </div>
 
+      <!-- Dice and list icons -->
       <img src="/static/Dice.png" class="dice">
       <img src="/static/List.png" class="list">
 
+      <!-- Split by black line down middle of page -->
       <div class="line-in-middle"></div>
 
+      <!-- Button to simulate on random requests -->
       <div>
         <a href="SimulateRandom.html">
             <button class = "random">

@@ -6,6 +6,9 @@
     <title>Request List</title>
     <style>
     
+    /* 
+    Styling for the table, giving it a clean look
+    */
     .tableContent{
         width: 90%;
         margin:25px 0;
@@ -96,6 +99,7 @@
     </style>
 </head>
 <body>
+    <!-- Search bar -->
     <ul>
         <li><a href="MainPage.html">Main Page</a></li>
         <li><a href="RequestPage.html">View All The Requests</a></li>
@@ -104,6 +108,7 @@
       </ul>
       <p></p>
   
+      <!-- Loading in requests from the Django database -->
     <h2>List of Requests From DataBase:</h2>
     <ul>
         {% for Ride in Rides %}
@@ -113,6 +118,9 @@
 
     <p></p>
   
+    <!-- Loading in the list of requests from local storage. Formatted much more
+    nicely than the django load, maybe we need to fix that?
+ -->
     <h2>List of Requests From Local Storage:</h2>
 
       <!-- Table with just the headers -->
@@ -125,6 +133,7 @@
             <th>Drop Off Time</th>
             <th></th>
         </thead>
+        <!-- Empty body that will be uploaded above -->
        <tbody>
             <tr>
             </tr>        
@@ -137,12 +146,13 @@
   <script>
         var arr = new Array();
         
+        // gets the request list from localstorage, puts the individual requests
+        // into the array
         function getData(){
             var str = localStorage.getItem("RequestList");
             if(str != null){
                 arr = JSON.parse(str);
             }
-           //console.warn(arr);
         }
 
         function showData(){
@@ -151,9 +161,11 @@
 
             var counter = 1;
 
+            //uploading data into the table
             var table = document.getElementById("table");
             for(let i = 0; i<arr.length; i++){
                 for(let j = 0; j<arr[i].length; j++){
+                    //inserting cells into the table
                     var r = table.insertRow();
                     var requestNum = r.insertCell();
                     var startPosition = r.insertCell();
@@ -162,7 +174,7 @@
                     var finishTime = r.insertCell();
                     var d = r.insertCell();
 
-
+                    //taking the data from the individual requests and also adding a delete button
                     requestNum.innerHTML = counter;
                     startPosition.innerHTML += arr[i][j].startPos;
                     finishPosition.innerHTML += arr[i][j].finishPos;
@@ -175,8 +187,12 @@
             }
         }
 
+        //running this when the html page is loaded, so it will
+        //automatically upload data into the table if anything exists in local storage
+        //or if anything exists in the django database
         showData();
 
+        //for distinguishing the type of method
         function reservedMethod(m){
             if(m=='Pick Up Time'){
                 return ' Pick up time: ';
@@ -184,11 +200,14 @@
             return ' Drop off time: '
         }
 
+        //for "deleting a request", right now it only removes it from the screen
+        //not local storage
         function deleteRow(o) {    
             var p=o.parentNode.parentNode;
             p.parentNode.removeChild(p);
         }
 
+        //does this work?
         function deleteFromStorage(n){
             var count = 0;
             for(let i = 0; i<arr.length; i++){

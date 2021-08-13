@@ -19,7 +19,10 @@
         }
         </style>
       </head>
+      <!-- In line styling -->
 <body style = "text-align: center;">
+
+    <!-- search bar -->
     <div style = "text-align: unset;" class="bar">
         <a class="title" href="">Dial a Ride Algorithm</a>
         <a  href="DispatcherLogin.html">Dispatcher Login</a>
@@ -32,11 +35,16 @@
 
 
     <script type="text/javascript">
+    
+        // Takes the last request in local storage (the most recent request submitted)
+        //and prints it to the screen
         const requests = JSON.parse(localStorage.getItem('RequestList'));
         const requestList = requests[requests.length-1];
         document.writeln("The List of requests you have submitted: " + "<br>" + "<br>");
 
+
         for(let i =0; i<requestList.length;i++){
+            //for each request submitted, the data uploaded
             let request = requestList[i];
             document.write("Request "+ (i+1) + "<br>");
             document.writeln ('Your starting position is: ' + request.startPos + "<br>");

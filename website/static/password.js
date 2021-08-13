@@ -1,3 +1,9 @@
+// JS for validating a login to the dispatcher site
+// The passwords are:
+/*
+    Usernames: llorenz, hluo, achristman
+    Password: password
+*/
 var information = JSON.parse(localStorage.getItem('DispatcherLogin'));
   if(!information){
      information = [];
@@ -36,12 +42,14 @@ var information = JSON.parse(localStorage.getItem('DispatcherLogin'));
         password: document.getElementById('password').value
       }
       if(!exist(info.username)){
+        //pushes info into the information array, then stores in localstorage below
         information.push(info);
       }
       localStorage.setItem('DispatcherLogin', JSON.stringify(information));
     }
   }
 
+  //check to see if username exists
   function exist(username){
         for(let i =0;i<information.length;i++){
             if(username == information[i].username){
@@ -51,6 +59,7 @@ var information = JSON.parse(localStorage.getItem('DispatcherLogin'));
         return false;
   }
 
+  //setting the passwords
   function key(){
       if(typeof information[0] == undefined){
           return '';

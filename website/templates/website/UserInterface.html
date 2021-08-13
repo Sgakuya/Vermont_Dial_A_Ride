@@ -3,6 +3,7 @@
     <meta charset="utf-8"> 
     <title>Submit Your Request</title>
     {% load static %}
+    <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
     <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+    <!-- Search bar -->
     <div class="bar">
         <a class="title" href="/website/MainPage.html">Back to Main</a>
         <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
@@ -59,7 +61,7 @@
                     </div> 
                         
                     </div>
-                    <!-- for the pickup/dropoff time -->
+                    <!-- Need to revert back to the normal date + time selections -->
                     <div class="form-group" style="margin-right: 82%;">
                             <label for="pickTime"><i class="far fa-clock"></i></label>
                             <label for="pickTime" class="clickMe">Click Me!</label>

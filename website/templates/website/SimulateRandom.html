@@ -54,6 +54,7 @@
 </head>
 
 <body>
+    <!-- Search bar -->
     <ul>
         <li><a href="MainPage.html">Main Page</a></li>
         <li><a href="RequestPage.html">View All The Requests</a></li>
@@ -61,6 +62,9 @@
         <li><a href="#Arrange">Get Schedule</a></li>
       </ul>
 
+      <!-- input for random request, user only submits the number that they want to generate
+        based on changes to the graph class, this may no longer function properly
+    -->
       <p>How many random requests do you want to generate: <br></p>
       <input type="number" name="num" id="num">
       <button id = "create" class="submitButton">Create</button>
@@ -78,6 +82,7 @@
               <th>Finish Time</th>
               <th>Shifted</th>
           </thead>
+          <!-- Empty body, initially -->
         <tbody id="body"> 
               <tr>
               </tr>        

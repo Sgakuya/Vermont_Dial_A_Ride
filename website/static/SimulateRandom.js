@@ -37,12 +37,10 @@ function createRandomRequest(){
             requestList.push(request);
         }else{
             var request = new Request1D(s,d,time*10,true,graph);
-            requestList.push(request);
-            
+            requestList.push(request); 
         }
-
-        if(requestList[requestList.length-1].pickTime<0){
-            
+        
+        if(requestList[requestList.length-1].pickTime<0){  
             requestList.pop();
             i--;
         }
@@ -129,11 +127,13 @@ function alg(list,time,origin,w1,w2,w3){
     }
 }
 
+//Shows the data in a table, gets the individual results 
 function showData(){
     var counter = 1;
 
     var table = document.getElementById("body");
     for(let i = 0; i<serveList.length; i++){
+        //Inserting cells
             var r = table.insertRow();
             var requestNum = r.insertCell();
             var startPosition = r.insertCell();
@@ -143,6 +143,7 @@ function showData(){
             var shift = r.insertCell();
 
 
+            //inputting data ainto those cells 
             requestNum.innerHTML = "Request " + counter;
             startPosition.innerHTML += serveList[i].startPos;
             finishPosition.innerHTML += serveList[i].finishPos;
@@ -155,6 +156,7 @@ function showData(){
 }
 
 
+//Function that runs the alg and displays the data
 function run(){
     changeWeight();
     alg(requestList,0,"Middlebury College",weights[0],weights[1],weights[2]);
@@ -175,14 +177,14 @@ function compare (a, b) {
         return -1;
 }
 
-
+//Deletes the body of the inner html
 function show(){
     document.getElementById("body").innerHTML = "";
 }
 
 
 
-
+//event listeners
 document.getElementById('create').addEventListener('click', createRandomRequest);
 document.getElementById('create').addEventListener('click', show);
 document.getElementById('run').addEventListener('click', run);
