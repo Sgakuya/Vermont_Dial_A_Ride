@@ -12,7 +12,7 @@ def index(request):
 
 def login_view(request):
     if request.method == "POST":
-        print('Fuck you mother every day')
+        
         # Accessing username and password from form data
         username = request.POST["username"]
         password = request.POST["password"]
