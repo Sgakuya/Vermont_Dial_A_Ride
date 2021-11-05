@@ -110,20 +110,6 @@
   
       <!-- Loading in requests from the Django database -->
     <h2>List of Requests From DataBase:</h2>
-    <ul>
-        {% for Ride in Rides %}
-            <li style="float:none"><h4>Ride: {{ Ride.origin }} to {{ Ride.destination }} at {{ Ride.pickTime }}</h4></li>
-        {% endfor %}
-    </ul>
-
-    <p></p>
-  
-    <!-- Loading in the list of requests from local storage. Formatted much more
-    nicely than the django load, maybe we need to fix that?
- -->
-    <h2>List of Requests From Local Storage:</h2>
-
-      <!-- Table with just the headers -->
     <table class = "tableContent" id="table">
         <thead>
             <th>Request #</th>
@@ -133,18 +119,25 @@
             <th>Drop Off Time</th>
             <th></th>
         </thead>
-        <!-- Empty body that will be uploaded above -->
-       <tbody>
-            <tr>
-            </tr>        
-            </tbody>
+        {% for Ride in Rides %}
+    <tr>
+        <td></td>
+        <td>{{ Ride.origin }}</td>
+        <td>{{ Ride.destination }}</td>
+        <td>{{ Ride.pickTime }}</td>
+    </tr> 
+    {% endfor %}
     </table>
     
-    <p>Currently, we do not delete the element from localstorage, just from the screen</p>
 
+    <p></p>
+  
+    <!-- Loading in the list of requests from local storage. Formatted much more
+    nicely than the django load, maybe we need to fix that?
+ -->
 
   <script>
-        var arr = new Array();
+       /* var arr = new Array();
         
         // gets the request list from localstorage, puts the individual requests
         // into the array
@@ -160,7 +153,7 @@
             //console.warn(arr);
 
             var counter = 1;
-
+            
             //uploading data into the table
             var table = document.getElementById("table");
             for(let i = 0; i<arr.length; i++){
@@ -186,6 +179,7 @@
                 }
             }
         }
+        
 
         //running this when the html page is loaded, so it will
         //automatically upload data into the table if anything exists in local storage
@@ -221,7 +215,15 @@
         function detele(o,n){
             deleteRow(o);
             deleteFromStorage(i,j);
-        }
+        }*/
+
+    var table = document.getElementsByTagName('table')[0],
+    rows = table.getElementsByTagName('tr'),
+    text = 'textContent' in document ? 'textContent' : 'innerText';
+
+    for (var i = 1, len = rows.length; i < len; i++) {
+        rows[i].children[0][text] = i + rows[i].children[0][text];
+    }
         
         </script>
 </body>
