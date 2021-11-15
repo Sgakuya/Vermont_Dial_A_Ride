@@ -1,3 +1,5 @@
+import{graphEdge} from './graphEdge.js';
+
 // Local variables for storage
 var edgeWeights = [];
 var missed = [];
@@ -23,8 +25,8 @@ var Graph = /** @class */ (function () {
     function Graph(m, s, d) {
         this.map = m;
         this.vtMap = ({});
-        directionsService = s;
-        directionsDisplay = d;
+        // directionsService = s;
+        // directionsDisplay = d;
         
 
         //List of locations that we plan on loading into our graph
@@ -63,7 +65,7 @@ var Graph = /** @class */ (function () {
 
             // "South Burlington, VT, USA",
             "South Burlington, VT, USA",
-            //????
+            
 
             "Starksboro, VT, USA",
             "Sudberry, VT, USA",
@@ -105,7 +107,7 @@ var Graph = /** @class */ (function () {
             };
         }
         
-       
+       //currently sets all edgeweights = -1 and stores in database
         setUp(this.locations);
     
       
@@ -208,6 +210,9 @@ var Graph = /** @class */ (function () {
         if (s1 === s2) {
             return 0;
         }
+        console.warn("s1: " + s1 + " s2: " +s2 + " " + (this.vtMap, s1).edges);
+        console.warn("edgeWeights are undefined!");
+        console.warn(this.vtMap);
         return  (function (m, k) { return m[k] === undefined ? null : m[k]; })((function (m, k) { return m[k] === undefined ? null : m[k]; })(this.vtMap, s1).edges, s2).weight;
     };
 
@@ -388,6 +393,7 @@ function setUp(locations){
 
             }else{
                 total++;
+                //This is where we need to get the graphEdge using the database!!!
                 var g = new graphEdge(locations[i],locations[j],-1);
                 edges.push(g);
                 console.log(edges);
@@ -517,4 +523,4 @@ BusRoute = BusRoute;
 BusRoute["__class"] = "BusRoute";
 
 
-// export { Graph, Vertex, Edge, BusPath, BusRoute };
+export {Graph};

@@ -52,5 +52,7 @@ var graphEdge = /** @class */ (function () {
     }());
     
 
+export{graphEdge};
+
     
     

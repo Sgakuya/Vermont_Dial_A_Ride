@@ -1,4 +1,4 @@
-import{Graph,Vertex,Edge,BusPath,BusRoute} from './Graph.js';
+import{Graph} from './Graph.js';
 import{Request1D}from './Request.js'
 var graph = new Graph();
 var requestList = [];
@@ -15,12 +15,13 @@ function createRandomRequest(){
     document.getElementById("demo").innerHTML += "The Random Requests Generated: " + '<br>';
     requestList = [];
     let numRequest = document.getElementById('num').value;
+    //for each request in the number of random requests requested
     for(let i = 0;i<numRequest;i++){
         var p = getRandomInt(2);
         var prob = getRandomInt(10)+1;
         var time;
         
-        //Assigning time of the request
+        //Assigning time of the request, weighted to add more realistic times
         if(prob == 1) time = getRandomInt(37);
         else if(prob == 10) time = getRandomInt(30)+115;
         else time = getRandomInt(78)+37;
@@ -33,9 +34,11 @@ function createRandomRequest(){
     
         //Reserved by pick up time
         if(p==0){
+            console.warn("s= ", s + " d = " + d + " time = " + time*10 + " T/F: " + true + " graph: " + graph);
             var request = new Request1D(s,d,time*10,false,graph);
             requestList.push(request);
         }else{
+            console.warn("s= ", s + " d = " + d + " time = " + time*10 + " T/F: " + true + " graph: " + graph);
             var request = new Request1D(s,d,time*10,true,graph);
             requestList.push(request); 
         }
@@ -64,7 +67,7 @@ function changeWeight(){
                     temp.push(n);
                 }
                 
-               
+            //    console.warn("entered ChangeWeight function");
                 alg(temp,0,"Middlebury College",i,j,k);
 
                 if(serveList.length>maxSize){

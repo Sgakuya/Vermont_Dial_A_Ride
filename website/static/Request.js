@@ -1,4 +1,3 @@
-import{Graph,Vertex,Edge,BusPath,BusRoute} from './Graph.js';
 
 //1D request, used for simulation purposes.
 /*
@@ -14,6 +13,7 @@ import{Graph,Vertex,Edge,BusPath,BusRoute} from './Graph.js';
     Rutland
     Brandon
 */
+
 var Request1D = /** @class */ (function () {
     //input similar to the original java code
     function Request1D(s, f, pt, dot,g) {
