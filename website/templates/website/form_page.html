@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Request Form</title>
+        {% load static %}
+    <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
+    <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+    </head>
+
+
+    <body>
+        <!-- Search bar -->
+    <div class="bar">
+        <a class="title" href="/website/MainPage.html">Back to Main</a>
+        <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
+        <a href="/website/aboutAlg.html">About the algorithm</a>
+        <a href="/website/busRoutes.html">Bus Routes</a>
+        <a class ="active" href="/users/login.html">Logout</a>
+    </div>
+
+    <div class="jumbotron"> 
+        <div class="container-fluid">
+            <h4>Create Your Ride Here:</h4>
+            <div id="googleMap"></div>
+            <h1>Please Sign Up Here</h1>
+            <form method = "POST", class="form-horizontal">
+                <label for="from"><i class="far fa-dot-circle"></i></label>
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="submit" class="btn btn-success btn-lg " value="Submit">
+            </form>
+        </div>
+        <div id="output"></div>
+    </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
+        <script src="{% static 'calcRoute.js' %}"></script>
+
+    </body>
+</html>

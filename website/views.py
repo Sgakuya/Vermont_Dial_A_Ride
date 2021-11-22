@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Ride
+from website.forms import UserForm
 
 
 
@@ -56,9 +57,20 @@ def cGraph(request):
 def user_view(request):
         if request.method == "POST":
                 # Accessing username and password from form data
-                origin = request.POST["from"]
-                destination = request.POST["to"]
+                origin = request.POST.get("from")
+                destination = request.POST.get("to")
                 req = Ride(origin=origin,destination=destination)
                 req.save()
         return render(request, "website/UserInterface.html")
+
+def form_page(request):
+        form = UserForm()
+        if request.method == "POST":
+                form = UserForm(request.POST)
+
+                if form.is_valid():
+                        form.save(commit=True)
+                        return MainPage(request)
+        return render(request, "website/form_page.html",{'form':form})
+
 
