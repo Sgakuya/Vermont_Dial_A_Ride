@@ -12,9 +12,7 @@ destinations = []
 
 # Create your views here.
 def index(request):
-    return render(request, "website/index.html",{
-        "destinations": destinations
-    })
+    return render(request, "website/MainPage.html")
 
 def MainPage(request):
         return render(request, "website/MainPage.html")
@@ -72,5 +70,4 @@ def form_page(request):
                         form.save(commit=True)
                         return MainPage(request)
         return render(request, "website/form_page.html",{'form':form})
-
-
+        

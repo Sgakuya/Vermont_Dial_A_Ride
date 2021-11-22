@@ -3,8 +3,30 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from users.forms import loginForm
 
 # Create your views here.
+
+def register(request):
+    registered = False
+
+    if request.method == "POST":
+        user_form = loginForm(data=request.POST)
+
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            registered = True
+        else:
+            print(user_form.errors)
+    else:
+        user_form = loginForm()
+
+    return render(request,'users/registration.html',
+        {'user_form': loginForm,
+         'registered': registered})
+
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
@@ -36,6 +58,9 @@ def logout_view(request):
     return render(request, "users/login.html",{
         "message": "Logged out"
     })
+
+def registration(request):
+        return render(request, "user/registration.html")
 
 def MainPage(request):
         return render(request, "website/MainPage.html")
