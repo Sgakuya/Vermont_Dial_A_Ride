@@ -1,4 +1,6 @@
 //set map options to center around middlebury
+console.log("Hello There");
+
 var myLatLng = { lat: 44.0153, lng: -73.1673 };
 var mapOptions = {
     center: myLatLng,
@@ -55,22 +57,22 @@ function calcRoute() {
             
             //for deciding for or against pickup time
 
-            var requestMethod = false;
-            if(document.getElementById("requestMethod").value == "Pick Up Time"){
-                requestMethod = true;
-            }
+            // var requestMethod = false;
+            // if(document.getElementById("requestMethod").value == "Pick Up Time"){
+            //     requestMethod = true;
+            // }
                 
                       
             //Taking all of the variables and storing them in variables
-            var spl = document.getElementById("pickTime").value.split(':');
-            var hrs = parseInt(spl[0]) * 60;
-            var mins = parseInt(spl[1]);
-            const pickOrDropTime = hrs + mins;
+            // var spl = document.getElementById("pickTime").value.split(':');
+            // var hrs = parseInt(spl[0]) * 60;
+            // var mins = parseInt(spl[1]);
+            // const pickOrDropTime = hrs + mins;
 
 
-            const date = document.getElementById("pickDate").value;
-            //converting the edgeweight into a value
-            const edgeWeight = Math.round((result.routes[0].legs[0].duration.value)/60);
+            // const date = document.getElementById("pickDate").value;
+            // //converting the edgeweight into a value
+            // const edgeWeight = Math.round((result.routes[0].legs[0].duration.value)/60);
 
             // g.printGraph();  
             console.log("Graph");

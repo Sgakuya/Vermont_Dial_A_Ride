@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Ride
+from users.models import User
 from website.forms import UserForm
 
 
@@ -41,6 +42,9 @@ def simulation(request):
 def simRan(request):
         return render(request, "website/simulateRandom.html")
 
+def UserPage(request):
+        return render(request, "website/UserPage.html")
+
 def requestPage(request):
         return render(request, "website/RequestPage.html", {
             "Rides" : Ride.objects.all()
@@ -68,6 +72,6 @@ def form_page(request):
 
                 if form.is_valid():
                         form.save(commit=True)
-                        return MainPage(request)
+                        #return UserPage(request)
         return render(request, "website/form_page.html",{'form':form})
         

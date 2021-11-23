@@ -30,7 +30,7 @@ def register(request):
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "website/UserInterface.html")
+    return render(request, "website/UserPage.html")
 
 def login_view(request):
     if request.method == "POST":

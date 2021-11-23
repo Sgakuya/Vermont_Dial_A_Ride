@@ -30,11 +30,11 @@
             <div id="googleMap"></div>
             <h1>Please Sign Up Here</h1>
             <form method = "POST", class="form-horizontal">
-                <label for="from"><i class="far fa-dot-circle"></i></label>
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" class="btn btn-success btn-lg " value="Submit">
+                <input type="submit" class="btn btn-success btn-lg" value="Submit">
             </form>
+            <button class="btn btn-success btn-lg " onclick="calcRoute();">Confirm<i class="far fa-paper-plane"></i></button>
         </div>
         <div id="output"></div>
     </div>

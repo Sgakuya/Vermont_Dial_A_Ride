@@ -18,4 +18,5 @@ urlpatterns = [
     path("UserInterface.html", views.user_view, name="user_view"),
     path("createGraph.html", views.cGraph, name="cGraph"),
     path("form_page.html", views.form_page, name="form_page"),
+    path("UserPage.html", views.UserPage, name="UserPage"),
 ]

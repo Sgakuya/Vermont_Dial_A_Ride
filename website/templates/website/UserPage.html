@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- Need to style this page -->
+<html>
+    <head>
+        <title>User Page</title>
+        {% load static %}
+        <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
+        <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+    </head>
+
+    <body>
+         <!-- Search bar -->
+        <div class="bar">
+            <a class="title" href="/website/MainPage.html">Back to Main</a>
+            <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
+            <a href="/website/aboutAlg.html">About the algorithm</a>
+            <a href="/website/busRoutes.html">Bus Routes</a>
+            <a class ="active" href="/users/login.html">Logout</a>
+        </div>
+        <h1>Welcome, {{ request.user }}</h1>
+        <a href=#><button>View My Request</button></a>
+        <a href="/website/form_page.html"><button>Reserve a Request</button></a>
+    </body>
+</html>
