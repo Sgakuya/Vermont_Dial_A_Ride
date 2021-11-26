@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <!-- Need to style this page -->
 <html>
+    <style>
+        
+        .traveler{
+            position: relative;
+            margin:0%;
+            width: 10%;
+            height:10%;
+            
+        }
+        #btn{
+            margin-top: 3%;
+            margin-left:1%;
+            width: 98%;
+        }
+        #btn2{
+            margin-left: 1%;
+            width: 98%;
+            
+        }
+        
+    </style>
     <head>
         <title>User Page</title>
         {% load static %}
@@ -23,7 +44,28 @@
             <a class ="active" href="/users/login.html">Logout</a>
         </div>
         <h1>Welcome, {{ request.user }}</h1>
-        <a href=#><button>View My Request</button></a>
-        <a href="/website/form_page.html"><button>Reserve a Request</button></a>
+
+        <a  href="/website/form_page.html"><button id= "btn2"class="btn btn-success btn-lg"><i class="fas fa-eye"></i>  View My Request   <i class="fas fa-eye"></i></button></a>
+        <br>
+
+        <a href="/website/form_page.html"><button id = "btn" class="btn btn-success btn-lg">Reserve a Request   <i class="far fa-arrow-alt-circle-right"></i></button></a>
+        <br>
+
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" >
+        <img src="/static/traveler.png" class="traveler" > 
+
+
+        <br>        
+        
+        <!-- class=" " onclick="calcRoute();">Submit Request<i class="far fa-paper-plane"></i></button> -->
+
+        
     </body>
 </html>
