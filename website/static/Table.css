@@ -1,5 +1,3 @@
-    /* Table styling  */
-
     
     .tableContent{
         width: 90%;
@@ -25,19 +23,6 @@
         text-align: left;
         padding: 12px 0px;
     }
-
-    table {
-        counter-reset: rowNumber;
-      }
-      
-      table tr::before {
-        display: 0;
-        counter-increment: rowNumber;
-        content: counter(rowNumber) ".";
-        padding-right: 0.3em;
-        text-align: right; 
-        background: #111111;
-      }
 
     .tableContent tbody tr{
         border-bottom: 1px solid #dddddd;
