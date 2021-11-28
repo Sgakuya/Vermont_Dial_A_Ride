@@ -7,6 +7,5 @@ from django.contrib.auth.models import User
 class UserProfileInfo(models.Model):
     users = models.OneToOneField(User, on_delete=models.CASCADE)
 
-
     def __str__(self): 
         return self.user.username

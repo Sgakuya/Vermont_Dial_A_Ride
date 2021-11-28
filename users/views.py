@@ -17,14 +17,16 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
+        
             registered = True
+        
         else:
             print(user_form.errors)
     else:
         user_form = loginForm()
 
     return render(request,'users/registration.html',
-        {'user_form': loginForm,
+        {'user_form': user_form,
          'registered': registered})
 
 def index(request):
