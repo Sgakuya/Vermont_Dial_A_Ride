@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load static %}
+    <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
+    <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+    <title>Your Requests</title>
+
+    <style>
+    
+        /* 
+        Styling for the table, giving it a clean look
+        */
+        .tableContent{
+            width: 90%;
+            margin:25px 0;
+            margin-left: 2%;
+            border-collapse:collapse;
+            font-family: "Monaco";
+            font-size: 0.8em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+    
+        .tableContent thead tr{
+            color: white;
+            background: #333333;
+            padding: 10% 10%;
+            text-align: left;
+            font-weight: bold;
+        }
+    
+        .tableContent th,
+        .tableContent td{
+            text-align: left;
+            padding: 12px 0px;
+        }
+    
+        .tableContent tbody tr{
+            border-bottom: 1px solid #dddddd;
+        }
+    
+        .tableContent tbody tr:nth-of-type(even){
+            background-color: #f3f3f3;
+        }
+    
+        .tableContent tbody tr:last-of-type{
+            border-bottom: 2px solid #333333;
+        }
+    
+        .topLeft{
+            border-top-left-radius: 1%;
+        }
+    
+        .topRight{
+            border-top-right-radius: 1%;
+        }
+        
+        .delete{
+        width: 70%;
+        /* padding: 12px 20px; */
+        
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: 10px;
+    
+        background-color: red;
+        color:white;
+        cursor: pointer;
+        }
+    
+        .delete::before{
+            content: '';
+            z-index: -1;
+            background: #e7e7e7;
+            -webkit-clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+            clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+            transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
+        }
+    
+        .delete:hover{
+            background-color: darkred;
+        }
+    
+        h2{
+            margin-left: 2%;
+            font-family: "Monaco";
+            text-decoration: underline;
+        }
+    
+        p{
+            margin-left: 2%;
+            font-family: "Monaco";
+        }
+    
+        h4{
+            font-family: "Monaco";
+            color: #dddddd;
+        }
+    </style>
+    
+    </head>
+
+
+    <body>
+        <!-- Search bar -->
+    <div class="bar">
+        <a class="title" href="/website/MainPage.html">Back to Main</a>
+        <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
+        <a href="/website/aboutAlg.html">About the algorithm</a>
+        <a href="/website/busRoutes.html">Bus Routes</a>
+        <a class ="active" href="/users/login.html">Logout</a>
+    </div>
+
+    <!-- Loading in requests from the Django database -->
+    <h1>Welcome, {{ request.user }}</h1>
+    Your Requests:
+    <table class = "tableContent" id="table">
+        <thead>
+            <th>Request #</th>
+            <th>Starting Position</th>
+            <th>Finishing Position</th>
+            <th>Pick Up Time</th>
+            <th>Rider</th>
+            <th></th>
+        </thead>
+        {% for Ride in Rides %}
+        {% ifequal Ride.user_name request.user %}
+    <tr>
+        <td></td>
+        <td>{{ Ride.origin }}</td>
+        <td>{{ Ride.destination }}</td>
+        <td>{{ Ride.time }}</td>
+        <td>{{ Ride.rider_name }}</td>
+    </tr> 
+        {% endifequal %}
+    {% endfor %}
+    </table>
+    
+
+    <p></p>
+  
+    <!-- Loading in the list of requests from local storage. Formatted much more
+    nicely than the django load, maybe we need to fix that?
+ -->
+
+  <script>
+
+    var table = document.getElementsByTagName('table')[0],
+    rows = table.getElementsByTagName('tr'),
+    text = 'textContent' in document ? 'textContent' : 'innerText';
+
+    for (var i = 1, len = rows.length; i < len; i++) {
+        rows[i].children[0][text] = i + rows[i].children[0][text];
+    }
+        
+    </script>
+
+    </body>

@@ -19,4 +19,5 @@ urlpatterns = [
     path("createGraph.html", views.cGraph, name="cGraph"),
     path("form_page.html", views.form_page, name="form_page"),
     path("UserPage.html", views.UserPage, name="UserPage"),
+    path("UserRequestPage.html", views.userRequestPage, name="UserRequestPage"),
 ]

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from users.models import User
 
 
 # Note: To make change in database:
@@ -20,9 +21,11 @@ class Ride(models.Model):
     #finishTime = models.IntegerField()
     #date = models.D
     #duration = models.IntegerField()
-    origin = models.CharField(max_length=64)
-    destination = models.CharField(max_length=64)
-    username = models.CharField(default="", max_length=64)
+    origin = models.CharField(max_length=100)
+    destination = models.CharField(max_length=100)
+    rider_name = models.CharField(default="", max_length=64)
+    contact_number = models.CharField(default="", max_length=30)
+    user_name = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
     time = models.DateTimeField(default=datetime.now,blank=True)
 
 class Edge(models.Model):

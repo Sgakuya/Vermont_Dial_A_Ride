@@ -71,7 +71,13 @@ def form_page(request):
                 form = UserForm(request.POST)
 
                 if form.is_valid():
-                        form.save(commit=True)
+                        post = form.save(commit=False)
+                        post.user_name = request.user
+                        post.save()
                         #return UserPage(request)
         return render(request, "website/form_page.html",{'form':form})
-        
+
+def userRequestPage(request):
+        return render(request, "website/UserRequestPage.html", {
+            "Rides" : Ride.objects.all()
+        })
