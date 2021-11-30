@@ -14,7 +14,7 @@ destinations = []
 
 # Create your views here.
 def index(request):
-    return render(request, "website/MainPage.html")
+    return render(request, "website/index.html")
 
 def MainPage(request):
         return render(request, "website/MainPage.html")
