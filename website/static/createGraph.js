@@ -391,6 +391,7 @@ function setUp(locations){
 }
 
 function addRefresh(){
+    total = 0;
     
     if(localStorage.getItem("missedWeights")){
 

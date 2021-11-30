@@ -405,36 +405,36 @@
     
 // }
 
-// //For the save and refresh button in the html
-// //Adds the first 10 locations if they are available, stores them and the weights
-// // in the local storage, then conti
-// function addRefresh(){
+//For the save and refresh button in the html
+//Adds the first 10 locations if they are available, stores them and the weights
+// in the local storage, then conti
+function addRefresh(){
     
-//     if(localStorage.getItem("missedWeights")){
+    if(localStorage.getItem("missedWeights")){
 
     
-//     var w = JSON.parse(localStorage.getItem("missedWeights"));
+    var w = JSON.parse(localStorage.getItem("missedWeights"));
 
-//     for(var i = 0; i < 10; i++){
-//         if(w[i]){
-//             graphAdd(w[i].startPos,w[i].finishPos);
-//         }else{
-//             // console.log("Hey it's empty!");
-//             break;
-//         }
-//     }
-//     w.splice(0,10);
-//     localStorage.setItem("missedWeights", JSON.stringify(w));
+    for(var i = 0; i < 10; i++){
+        if(w[i]){
+            graphAdd(w[i].startPos,w[i].finishPos);
+        }else{
+            // console.log("Hey it's empty!");
+            break;
+        }
+    }
+    w.splice(0,10);
+    localStorage.setItem("missedWeights", JSON.stringify(w));
 
-//     setTimeout(
-//         function(){
-//             window.location.reload(true);
-//         },3000);
+    setTimeout(
+        function(){
+            window.location.reload(true);
+        },3000);
         
-//     }else{
-//         console.log("Miss is Empty!!!")
-//     }
-// }
+    }else{
+        console.log("Miss is Empty!!!")
+    }
+}
 
 
 
