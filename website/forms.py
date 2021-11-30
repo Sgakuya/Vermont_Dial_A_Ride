@@ -5,11 +5,11 @@ from users.models import User
 
 
 class UserForm(forms.ModelForm):
-    origin = forms.CharField(widget=forms.TextInput(attrs={'id':'from', 'placeholder':'origin', 'class':'form-control'}))
-    destination = forms.CharField(widget=forms.TextInput(attrs={'id':'to', 'placeholder':'destination', 'class':'form-control'}))
-    rider_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Name ', 'class':'form-control'}))
-    contact_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Number to contact', 'class':'form-control'}))
-    time = forms.DateTimeField(widget=forms.TimeInput(attrs={'placeholder':'Enter The Time for 24 hour clock', 'class':'form-control'}), 
+    origin = forms.CharField(widget=forms.TextInput(attrs={'id':'from', 'placeholder':'Origin', 'class':'form-control'}))
+    destination = forms.CharField(widget=forms.TextInput(attrs={'id':'to', 'placeholder':'Destination', 'class':'form-control'}))
+    rider_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'to','placeholder':'Name ', 'class':'form-control'}))
+    contact_number = forms.CharField(widget=forms.TextInput(attrs={'id': 'to','placeholder':'Phone Number', 'class':'form-control'}))
+    time = forms.DateTimeField(widget=forms.TimeInput(attrs={'id': 'to','placeholder':'Enter The Time for 24 hour clock', 'class':'form-control'}), 
         label="Time (In form YYYY-MM-DD hh:mm:ss)")
     #user_name = forms.CharField(widget = forms.HiddenInput(), required = False)
 
