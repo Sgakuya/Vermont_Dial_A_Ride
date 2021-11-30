@@ -1,7 +1,9 @@
 from django.urls import path
+from django.conf.urls import url
 #from django.conf.urls import include
 
 from . import views
+from .views import *
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -20,4 +22,7 @@ urlpatterns = [
     path("form_page.html", views.form_page, name="form_page"),
     path("UserPage.html", views.UserPage, name="UserPage"),
     path("UserRequestPage.html", views.userRequestPage, name="UserRequestPage"),
+    path("Deleted.html", views.DeletedPage, name="DeletedPage"),
+    url(r'^delete/(?P<pk>\d+)$', delete_post, name="delete_post"),
+    #path("UserRequestPage.html", views.delete_post, name="delete_post"),
 ]

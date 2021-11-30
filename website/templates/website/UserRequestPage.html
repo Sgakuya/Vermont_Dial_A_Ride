@@ -128,6 +128,7 @@
             <th>Finishing Position</th>
             <th>Pick Up Time</th>
             <th>Rider</th>
+            <th>Delete</th>
             <th></th>
         </thead>
         {% for Ride in Rides %}
@@ -138,6 +139,7 @@
         <td>{{ Ride.destination }}</td>
         <td>{{ Ride.time }}</td>
         <td>{{ Ride.rider_name }}</td>
+        <td><a href="{% url 'delete_post' pk=Ride.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" >Delete</a></td>
     </tr> 
         {% endifequal %}
     {% endfor %}

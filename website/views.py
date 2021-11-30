@@ -1,11 +1,12 @@
 from django import forms
 from django.http.response import HttpResponseRedirect
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from .models import Ride
 from users.models import User
 from website.forms import UserForm
+from django.contrib import messages
 
 
 
@@ -53,6 +54,9 @@ def requestPage(request):
 def reserved(request):
         return render(request, "website/ReservedPage.html")
 
+def DeletedPage(request):
+        return render(request, "website/Deleted.html")
+
 def cGraph(request):
         return render(request, "website/createGraph.html")
         
@@ -81,3 +85,15 @@ def userRequestPage(request):
         return render(request, "website/UserRequestPage.html", {
             "Rides" : Ride.objects.all()
         })
+
+def delete_post(request, pk):
+        template = 'website/Deleted.html'
+        Ride.objects.filter(id=pk).delete()
+
+        items = Ride.objects.all()
+        
+        context = {
+                #'form':form,
+                'items' : items,
+        }
+        return render(request,template,context)
