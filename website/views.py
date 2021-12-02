@@ -40,6 +40,9 @@ def dis(request):
 def simulation(request):
         return render(request, "website/simulation.html")
 
+def matrix(request):
+        return render(request,"website/distMatrix.html")
+
 def simRan(request):
         return render(request, "website/simulateRandom.html")
 

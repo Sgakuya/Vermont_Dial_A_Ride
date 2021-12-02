@@ -2,7 +2,40 @@
 <html>
 <head>
   {% load static %}
-	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+  <!-- <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+  <style>
+  .button {
+    background-color: #333333; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 2%;
+    margin-left: 1%;
+
+    width:98%;
+  }
+  .button:hover{
+    background-color: #111111
+  }
+
+  h2{
+    margin-left: 2%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  p{
+    margin-left: 3%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+  }
+
+  </style>
+
     <title>DispatcherInterface</title>
 </head>
 <body>
@@ -14,10 +47,23 @@
   <li><a href="simulation.html">Run Simulation</a></li>
   <li><a href="getSchedule.html">Get Schedule</a></li>
 </ul>
-<a href="createGraph.html"><button>Update Graph</button></a>
-<img src="/static/subaru.png" alt="Subaru" width="500" height="333" >
-<img src="/static/Audi.png" alt="Audi" width="500" height="333" >
-<p><h1>We Are Still Working On This Page......</h1></p>
+<!-- <img src="/static/Audi.png" alt="Audi" width="500" height="333" > -->
+
+<b><h2>View All the Requests:</h2></b>
+<p>Allows the dispatcher to view all requests made by riders</p>
+<h2>Run Simulation:</h2>
+<p>Allows dispatcher to run simulations on theoretical requests and actual requests</p>
+
+<h2>Get Schedule</h2>
+<p>Gets the optimal schedule with the current reserved requests</p>
+
+<h2>Update Graph</h2>
+<p>Allows generation and storage of edgeweights to the database</p>
+<a href="createGraph.html"><button class="button">Update Graph</button></a>
+<a href="distMatrix.html"><button class="button">Distance Matrix</button></a>
+
+
+
 
 </body>
 </html>

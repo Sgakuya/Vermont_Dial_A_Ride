@@ -13,6 +13,7 @@ urlpatterns = [
     path("DispatcherLogin.html", views.disLog, name="disLog"),
     path("DispatcherInterface.html", views.dis, name="dis"),
     path("simulation.html", views.simulation, name="simulation"),
+    path("distMatrix.html", views.matrix, name="matrix"),
     path("SimulateRandom.html", views.simRan, name="simRan"),
     path("SimulateExisiting.html", views.simExi,name="simExi"),
     path("RequestPage.html", views.requestPage, name="requestPage"),

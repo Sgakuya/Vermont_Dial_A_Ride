@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+
+    <div id="result"></div>
+
+    
+    <script>
+      // Initialize and add the map
+      let map;
+      function initMap() {
+
+      const service = new google.maps.DistanceMatrixService(); // instantiate Distance Matrix service
+      const matrixOptions = {
+        origins: [
+
+            "Addison, VT, USA",
+            "Brandon, VT, USA",
+            "Bridport, VT, USA",
+            "Bristol, VT, USA",
+
+            //Burlington
+            "Burlington, VT, USA",
+
+
+            "Colchester, VT, USA",
+            "Cornwall, VT, USA",
+            "East Middlebury, Middlebury, VT, USA",
+            "Essex Junction, Essex, VT, USA",
+            "Essex, VT, USA",
+            "Ferrisburg, VT, USA",
+            "Hinesburg, VT, USA",
+            "Lebanon, VT, USA",
+            "Leicester, VT, USA",
+
+            //Middlebury
+            "Middlebury, VT, USA",
+
+            "New Haven, VT, USA",
+            "Orwell, VT, USA",
+            "Ripton, VT, USA",
+            "Rutland, VT, USA",
+            
+            
+            ], // technician locations
+        destinations: [
+            "14 Old Chapel Road, Middlebury, VT, USA",
+            "New Haven, VT, USA",
+             "Orwell, VT, USA",
+             "Ripton, VT, USA",
+             
+        ], // customer address
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL
+      };
+      // Call Distance Matrix service
+      service.getDistanceMatrix(matrixOptions, callback);
+
+      // Callback function used to process Distance Matrix response
+      function callback(response, status) {
+        if (status !== "OK") {
+          alert("Error with distance matrix");
+          return;
+        }
+        console.log(response);
+        const output = document.querySelector('#result');
+        
+        for(let i =0; i<response.rows.length; i++){
+            for(let j = 0; j<response.rows[0].elements.length; j++){
+                // console.log(response.destinationAddress);
+            output.innerHTML += response.originAddresses[i] + " TO DESTINATION: " + response.destinationAddresses[j] + " TRAVEL TIME WILL BE: " + response.rows[i].elements[j].duration.text + "<br><br>";
+
+            }
+        }
+        // output.innerHTML = response.rows[0].elements[0].duration.text + '\n';
+        // output.innerHTML = JSON.parse(response);
+        
+      }
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&callback=initMap">
+    </script>
+  </body>
+</html>
