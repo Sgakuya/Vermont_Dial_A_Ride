@@ -144,6 +144,7 @@
       <h2>Served Requests:</h2>
       <table class = "tableContent" id="table">
           <thead>
+              <th>Request#</th>
               <th>Starting Position</th>
               <th>Finishing Position</th>
               <th>Pick Up Time</th>
@@ -245,7 +246,8 @@
           else
             return -1;
         }
-        
+
+
         var serveList = [];
         function run(){
           getContent();
@@ -259,6 +261,43 @@
             }
           }
           console.log(serveList);
+          var counter = 1;
+
+          var table = document.getElementById("body");
+          for(let i = 0; i<serveList.length; i++){
+          //Inserting cells
+          var r = table.insertRow();
+          var requestNum = r.insertCell();
+          var startPosition = r.insertCell();
+          var finishPosition = r.insertCell();
+          var pickTime = r.insertCell();
+          var finishTime = r.insertCell();
+          var Rider = r.insertCell();
+          var Username = r.insertCell();
+
+
+          //inputting data ainto those cells 
+          requestNum.innerHTML = counter;
+          startPosition.innerHTML += serveList[i].startPos;
+          finishPosition.innerHTML += serveList[i].finishPos;
+          pickTime.innerHTML += changeBack(serveList[i].pickTime);
+          finishTime.innerHTML += changeBack(serveList[i].finishTime);
+          Rider.innerHTML += serveList[i].Rider;
+          Username.innerHTML += serveList[i].username;
+
+          counter ++;
+          }
+        }
+
+        function changeBack(num){
+          var year = Math.floor((num/100000000)).toString();
+          num = num%(100000000);
+          var month = Math.floor((num/1000000)).toString();
+          num = num%(1000000);
+          var day = Math.floor((num/10000)).toString();
+          num = num%(10000);
+          var hourmin = Math.floor(num/60) + ':' +  ((num%60 < 10) ? ("0" + num%60) : num%60);
+          return year + "-" + month + "-" + day + " " + hourmin;
         }
 
         document.getElementById('run').addEventListener('click', run);
