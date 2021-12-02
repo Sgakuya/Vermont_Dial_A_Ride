@@ -116,7 +116,9 @@
             <th>Starting Position</th>
             <th>Finishing Position</th>
             <th>Pick Up Time</th>
+            <th>Duration</th>
             <th>Rider</th>
+            <th>Username</th>
             <th></th>
         </thead>
         {% for Ride in Rides %}
@@ -125,7 +127,9 @@
         <td>{{ Ride.origin }}</td>
         <td>{{ Ride.destination }}</td>
         <td>{{ Ride.time }}</td>
+        <td>{{ Ride.trip_duration }}</td>
         <td>{{ Ride.rider_name }}</td>
+        <td>{{ Ride.user_name }}</td>
     </tr> 
     {% endfor %}
     </table>

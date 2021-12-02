@@ -14,6 +14,7 @@ urlpatterns = [
     path("DispatcherInterface.html", views.dis, name="dis"),
     path("simulation.html", views.simulation, name="simulation"),
     path("SimulateRandom.html", views.simRan, name="simRan"),
+    path("SimulateExisiting.html", views.simExi,name="simExi"),
     path("RequestPage.html", views.requestPage, name="requestPage"),
     path("ReservedPage.html", views.reserved, name="reserved"),
     path("users/login.html", views.users, name="users"),

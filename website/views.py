@@ -43,6 +43,11 @@ def simulation(request):
 def simRan(request):
         return render(request, "website/simulateRandom.html")
 
+def simExi(request):
+        return render(request, "website/SimulateExisiting.html", {
+            "Rides" : Ride.objects.all()
+        })
+
 def UserPage(request):
         return render(request, "website/UserPage.html")
 
