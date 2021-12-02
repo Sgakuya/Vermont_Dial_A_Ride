@@ -50,7 +50,12 @@ function calcRoute() {
             //Get distance and time
             const output = document.querySelector('#output');
             output.innerHTML = "<div class='alert-success'><i class='fas fa-shuttle-van'></i> Your Request has Been Submitted <i class='fas fa-shuttle-van'></i> <br/> From (A): " + document.getElementById("from").value + ".<br />To (B): " + document.getElementById("to").value +  ".<br />Travel Time : " + result.routes[0].legs[0].duration.text + ".</div>";
+            console.log(result.routes[0].legs[0].duration.text);
+            
+            document.querySelector('#duration').value = result.routes[0].legs[0].duration.text;
+            console.log(document.getElementById("duration").value);
 
+            
             
             
             //taking from autofill

@@ -79,6 +79,8 @@ def form_page(request):
                         post.user_name = request.user
                         post.save()
                         #return UserPage(request)
+                else:
+                        messages.error(request,"Please Click Confirm Before Submit")
         
         return render(request, "website/form_page.html",{'form':form})
 

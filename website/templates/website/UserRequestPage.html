@@ -127,6 +127,7 @@
             <th>Starting Position</th>
             <th>Finishing Position</th>
             <th>Pick Up Time</th>
+            <th>Trip Duraiton</th>
             <th>Rider</th>
             <th>Delete</th>
             <th></th>
@@ -138,6 +139,7 @@
         <td>{{ Ride.origin }}</td>
         <td>{{ Ride.destination }}</td>
         <td>{{ Ride.time }}</td>
+        <td>{{ Ride.trip_duration }}</td>
         <td>{{ Ride.rider_name }}</td>
         <td><a href="{% url 'delete_post' pk=Ride.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" >Delete</a></td>
     </tr> 

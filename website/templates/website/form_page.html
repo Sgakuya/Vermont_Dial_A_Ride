@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'barStyle.css'%}">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     </head>
 
@@ -34,12 +32,11 @@
             <h4>Create Your Ride Here:</h4>
             <div id="googleMap"></div>
             <h1>Please Sign Up Here</h1>
-            <form method = "POST", class="form-horizontal" id= "post-form"onsubmit="calcRoute();">
+            <form method = "POST", class="form-horizontal" onsubmit="calcRoute();">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <input type="submit" class="btn btn-success btn-lg" value="Submit" >
-            </form>
-            <!-- <button class="btn btn-success btn-lg" id="confirm" onclick="calcRoute();">Confirm<i class="far fa-paper-plane"></i></button> -->
+                <input type="submit" class="btn btn-success btn-lg" value="Submit">
+            </form><button class="btn btn-success btn-lg" id="confirm" onclick="calcRoute();">Confirm<i class="far fa-paper-plane"></i></button>
         </div>
         <div id="output"></div>
     </div>
@@ -47,10 +44,4 @@
         <script src="{% static 'calcRoute.js' %}"></script>
 
     </body>
-    <script type="text/javascript">
-        $(document).on('submit','#post-form', function(e){
-            e.preventDefault();
-        })
-    </script>
-
 </html>

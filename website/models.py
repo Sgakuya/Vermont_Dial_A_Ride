@@ -27,6 +27,7 @@ class Ride(models.Model):
     contact_number = models.CharField(default="", max_length=30)
     user_name = models.ForeignKey(User, default=User, on_delete=models.CASCADE)
     time = models.DateTimeField(default=datetime.now,blank=True)
+    trip_duration = models.CharField(default="", max_length=30)
 
 class Edge(models.Model):
     origin = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="origin")
