@@ -25,6 +25,8 @@ directionsDisplay.setMap(map);
 
 
 function calcRoute() {
+
+    console.log("This thing workin?");
     //create request
     var request = {
         origin: document.getElementById("from").value,
