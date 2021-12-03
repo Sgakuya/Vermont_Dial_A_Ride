@@ -159,8 +159,10 @@
         </tbody>
       </table>
     
+      <div id ="result"></div>
 
       <script>
+
         var table = document.getElementsByTagName('table')[0],
         rows = table.getElementsByTagName('tr'),
         text = 'textContent' in document ? 'textContent' : 'innerText';
@@ -289,6 +291,71 @@
           }
         }
 
+        function run2(){
+          getContent();
+          
+          newList = [];
+        
+          for(let i = 0; i<requestList.length; i++){
+          
+              if(newList.indexOf(requestList[i].startPos) == -1){
+                newList.push(requestList[i].startPos);
+              }
+              if(newList.indexOf(requestList[i].finishPos) == -1){
+                newList.push(requestList[i].finishPos);
+              }
+ 
+          }
+          console.log(newList);
+          
+          const service = new google.maps.DistanceMatrixService(); // instantiate Distance Matrix service
+          const matrixOptions = {
+        origins: newList,
+        //   [
+        //     "Middlebury, VT, USA",
+        //     "New Haven, VT, USA",
+        //      "Orwell, VT, USA",
+        //      "Ripton, VT, USA",
+             
+        // ], // customer address
+        
+        
+        destinations: newList,
+        //  [
+        //     "Middlebury, VT, USA",
+        //     "New Haven, VT, USA",
+        //      "Orwell, VT, USA",
+        //      "Ripton, VT, USA",
+             
+        // ], // customer address
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL
+      };
+      // Call Distance Matrix service
+      service.getDistanceMatrix(matrixOptions, callback);
+
+      // Callback function used to process Distance Matrix response
+      function callback(response, status) {
+        if (status !== "OK") {
+          alert("Error with distance matrix");
+          return;
+        }
+        console.log(response);
+        const output = document.querySelector('#result');
+        
+        for(let i =0; i<response.rows.length; i++){
+            for(let j = 0; j<response.rows[0].elements.length; j++){
+                // console.log(response.destinationAddress);
+            output.innerHTML += response.originAddresses[i] + " TO DESTINATION: " + response.destinationAddresses[j] + " TRAVEL TIME WILL BE: " + response.rows[i].elements[j].duration.text + "<br><br>";
+
+            }
+        }
+        // output.innerHTML = response.rows[0].elements[0].duration.text + '\n';
+        // output.innerHTML = JSON.parse(response);
+        
+      }
+        }
+
         function changeBack(num){
           var year = Math.floor((num/100000000)).toString();
           num = num%(100000000);
@@ -300,7 +367,9 @@
           return year + "-" + month + "-" + day + " " + hourmin;
         }
 
-        document.getElementById('run').addEventListener('click', run);
+        document.getElementById('run').addEventListener('click', run2);
+      </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&callback=initMap">
       </script>
   </body>
   
