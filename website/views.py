@@ -46,6 +46,9 @@ def matrix(request):
 def simRan(request):
         return render(request, "website/simulateRandom.html")
 
+def getSchedule(request):
+        return render(request, "website/getSchedule.html")
+
 def simExi(request):
         return render(request, "website/SimulateExisiting.html", {
             "Rides" : Ride.objects.all()

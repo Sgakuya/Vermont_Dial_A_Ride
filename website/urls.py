@@ -25,6 +25,7 @@ urlpatterns = [
     path("UserPage.html", views.UserPage, name="UserPage"),
     path("UserRequestPage.html", views.userRequestPage, name="UserRequestPage"),
     path("Deleted.html", views.DeletedPage, name="DeletedPage"),
+    path("getSchedule.html", views.getSchedule, name="getSchedule"),
     url(r'^delete/(?P<pk>\d+)$', delete_post, name="delete_post"),
     #path("UserRequestPage.html", views.delete_post, name="delete_post"),
 ]
