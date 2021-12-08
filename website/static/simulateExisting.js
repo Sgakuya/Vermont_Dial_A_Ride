@@ -189,7 +189,6 @@ for (var f = 0; f < newList2.length; f++) {
 for(let i =0; i<response.rows.length; i++){
     for(let j = 0; j<response.rows[0].elements.length; j++){
         // console.log(response.destinationAddress);
-    output.innerHTML += response.originAddresses[i] + " TO DESTINATION: " + response.destinationAddresses[j] + " TRAVEL TIME WILL BE: " + response.rows[i].elements[j].duration.text + "<br><br>";
     
     var weight = formatDuration(response.rows[i].elements[j].duration.text);
 
@@ -204,8 +203,8 @@ console.log(graph.printEdges());
 
 console.log("Creating rLIST");
 for(var i=0;i<requestList.length;i++){
-    console.log(new RequestNew(splitAndFormat(requestList[i].startPos),splitAndFormat(requestList[i].finishPos),requestList[i].pickTime,graph));
-    rList.push(new RequestNew(splitAndFormat(requestList[i].startPos),splitAndFormat(requestList[i].finishPos),requestList[i].pickTime,graph));
+    rList.push(new RequestNew(splitAndFormat(requestList[i].startPos),splitAndFormat(requestList[i].finishPos),requestList[i].pickTime,graph,requestList[i].Rider,requestList[i].username));
+    console.log(rList[i]);
 }
 
 changeWeight();
@@ -214,6 +213,7 @@ alg(rList,0,"Middlebury",weights[0],weights[1],weights[2]);
 //WORKS WITHOUT CHANGEWEIGHT
 //alg(rList,0,"Middlebury",0,1,0);
 console.log(serveList);
+showData();
 //empty the lists
 serveList = [];
 rList = [];
@@ -248,7 +248,7 @@ function changeWeight(){
             for(var k=0; k<=10;k++){
                 var temp = [];
                 for(var m = 0;m<rList.length;m++){
-                    var n = new RequestNew(rList[m].startPos,rList[m].finishPos,rList[m].pickTime,graph);
+                    var n = new RequestNew(rList[m].startPos,rList[m].finishPos,rList[m].pickTime,graph,rList[m].rider,rList[m].username);
                     temp.push(n);
                 }
                 
@@ -313,6 +313,38 @@ function alg(list,time,origin,w1,w2,w3){
 
         alg(list,time,origin,w1,w2,w3);
     }
+}
+
+//Shows the data in a table, gets the individual results 
+function showData(){
+  var counter = 1;
+
+  var table = document.getElementById("body");
+  for(let i = 0; i<serveList.length; i++){
+      //Inserting cells
+          var r = table.insertRow();
+          var requestNum = r.insertCell();
+          var startPosition = r.insertCell();
+          var finishPosition = r.insertCell();
+          var pickTime = r.insertCell();
+          var finishTime = r.insertCell();
+          var shift = r.insertCell();
+          var rider = r.insertCell();
+          var username = r.insertCell();
+
+
+          //inputting data ainto those cells 
+          requestNum.innerHTML = "Request " + counter;
+          startPosition.innerHTML += serveList[i].startPos;
+          finishPosition.innerHTML += serveList[i].finishPos;
+          pickTime.innerHTML += changeBack(serveList[i].pickTime);
+          finishTime.innerHTML += changeBack(serveList[i].finishTime);
+          shift.innerHTML += serveList[i].shift + " min earlier";
+          rider.innerHTML += serveList[i].rider;
+          username.innerHTML += serveList[i].username;
+          
+          counter ++;
+  }
 }
 
 document.getElementById('run').addEventListener('click', run2);

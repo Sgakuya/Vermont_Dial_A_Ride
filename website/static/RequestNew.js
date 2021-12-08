@@ -1,7 +1,7 @@
 import{graphNew} from './graphNew.js';
 var RequestNew = /** @class */ (function () {
     //input similar to the original java code
-    function RequestNew(s, f, pt, g) { 
+    function RequestNew(s, f, pt, g,r,u) { 
         if((typeof g === 'object')){
 
         this.startPos = s;
@@ -11,6 +11,8 @@ var RequestNew = /** @class */ (function () {
         this.finishTime = this.pickTime + this.weight;
         this.f_value = 0;
         this.shift = 0;
+        this.rider = r;
+        this.username = u;
         }
     }
 
