@@ -56,6 +56,7 @@
           border-top-right-radius: 1%;
       }
       
+
       .delete{
       width: 70%;
       /* padding: 12px 20px; */
@@ -139,6 +140,13 @@
   
       <p></p>
       
+      <!-- Need to style -->
+      <p>Driver Origin</p>
+      <div class="form-group">
+        <label for="from"><i class="far fa-dot-circle"></i></label>
+        <input type="text" id="from" placeholder="Origin" class="form-control">
+        </div>
+
       <button id = "run" class="submitButton">Run Simulation</button>
 
       <h2>Served Requests:</h2>
@@ -164,7 +172,7 @@
 
       <script type="module" src="/static/SimulateExisting.js"></script>
       <script type="module" src="/static/graphNew.js"></script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&callback=initMap">
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
       </script>
   </body>
   

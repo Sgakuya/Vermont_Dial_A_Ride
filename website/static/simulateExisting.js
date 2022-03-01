@@ -348,3 +348,12 @@ function showData(){
 }
 
 document.getElementById('run').addEventListener('click', run2);
+
+//create autocomplete objects for all inputs
+var options = {
+  types: ['geocode', 'establishment']
+}
+
+//Autocomplete for the starting location
+var input1 = document.getElementById("from");
+var autocomplete1 = new google.maps.places.Autocomplete(input1, options);

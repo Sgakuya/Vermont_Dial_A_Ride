@@ -6,6 +6,8 @@ var weights = [0,0,0];
 var serveList = [];
 
 
+
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -110,14 +112,14 @@ function alg(list,time,origin,w1,w2,w3){
     if(list.length>0){
         var r = list[0];
         var T = (r.pickTime-time) - graph.getEdgeWeight(origin,r.startPos);
-        if(T<=30 && T>=0){
+        if(T<=15 && T>=0){
             r.finishTime -= T;
             r.pickTime -= T;
             r.shift = T;
-        }else if(T>30){
-            r.finishTime -= 30;
-            r.pickTime -= 30;
-            r.shift = 30;
+        }else if(T>15){
+            r.finishTime -= 15;
+            r.pickTime -= 15;
+            r.shift = 15;
         }
 
         
@@ -161,6 +163,10 @@ function showData(){
 
 //Function that runs the alg and displays the data
 function run(){
+    // For allowing drivers to change their starting locations
+    var loc = document.getElementById("from")
+    console.warn(loc.value)
+
     changeWeight();
     alg(requestList,0,"Middlebury College",weights[0],weights[1],weights[2]);
     showData();
@@ -191,3 +197,12 @@ function show(){
 document.getElementById('create').addEventListener('click', createRandomRequest);
 document.getElementById('create').addEventListener('click', show);
 document.getElementById('run').addEventListener('click', run);
+
+//create autocomplete objects for all inputs
+var options = {
+    types: ['geocode', 'establishment']
+}
+
+//Autocomplete for the starting location
+var input1 = document.getElementById("from");
+var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
