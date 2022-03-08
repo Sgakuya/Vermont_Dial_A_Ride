@@ -110,14 +110,14 @@ function alg(list,time,origin,w1,w2,w3){
     if(list.length>0){
         var r = list[0];
         var T = (r.pickTime-time) - graph.getEdgeWeight(origin,r.startPos);
-        if(T<=30 && T>=0){
+        if(T<=15 && T>=0){
             r.finishTime -= T;
             r.pickTime -= T;
             r.shift = T;
-        }else if(T>30){
-            r.finishTime -= 30;
-            r.pickTime -= 30;
-            r.shift = 30;
+        }else if(T>15){
+            r.finishTime -= 15;
+            r.pickTime -= 15;
+            r.shift = 15;
         }
 
         
