@@ -280,7 +280,9 @@ function alg(list,time,origin,w1,w2,w3){
     //remove all the illegal requests
     for(var i=0;i<list.length;i++){
         var r = list[i];
-
+        //check if picktime + 15 < time
+        //if picktime already < time, then ignore
+        //if picktime is within 15 minutes, then shift backward
         if(r.pickTime<time){
             list.splice(i,1);
             i--;
