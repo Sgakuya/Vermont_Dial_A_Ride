@@ -98,15 +98,18 @@ function alg(list,time,origin,w1,w2,w3){
     for(var i=0;i<list.length;i++){
         var r = list[i];
 
-        if(r.pickTime<time){
+        //Allowing 15 minutes delay
+        if(r.pickTime < time + 15){
             list.splice(i,1);
             i--;
             continue;
         }
-        if(graph.getEdgeWeight(origin,r.startPos)+time>r.pickTime){
+        
+        if(graph.getEdgeWeight(origin,r.startPos) + time + 15>r.pickTime){
             list.splice(i,1);
             i--;
         }
+
     }
 
     if(list.length>0){
