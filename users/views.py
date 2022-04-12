@@ -1,3 +1,6 @@
+# Takes web request and returns a web response ,
+# Most of the views on this page return a redirect to another html file
+
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
@@ -6,7 +9,7 @@ from django.urls import reverse
 from users.forms import loginForm
 
 # Create your views here.
-
+# For registering users in database
 def register(request):
     registered = False
 
@@ -28,12 +31,12 @@ def register(request):
     return render(request,'users/registration.html',
         {'user_form': user_form,
          'registered': registered})
-
+# verifies valid users
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
     return render(request, "website/UserPage.html")
-
+#
 def login_view(request):
     if request.method == "POST":
         
@@ -54,13 +57,14 @@ def login_view(request):
                 "message": "Invalid Credentials"
             })
     return render(request, "users/login.html")
-
+# Changes to users/login.html, and the message that the user has been logged out
 def logout_view(request):
     logout(request)
     return render(request, "users/login.html",{
         "message": "Logged out"
     })
 
+# For navigation/redirect paths
 def registration(request):
         return render(request, "user/registration.html")
 

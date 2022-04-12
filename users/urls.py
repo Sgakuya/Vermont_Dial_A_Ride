@@ -1,3 +1,5 @@
+# Url patterns from views, allows users to switch back and forth from html pages
+
 from django.urls import path
 from . import views
 

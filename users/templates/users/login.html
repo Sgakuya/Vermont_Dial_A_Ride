@@ -1,3 +1,13 @@
+<!-- 
+Login interface for the rider.
+Allows a registered user to login to the website in order to save their ride. If
+the user is not registered, they can click the register button, which will
+take them to 'registration.html'
+The navigation bars above are styled by barstyle.css, and the buttons/form
+is styled within this file.
+
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +60,7 @@
         </style>
     </head>
     <body>
+        <!-- class = bar for styling -->
         <div class="bar">
             <a class="title" href="/website/MainPage.html">Back to Main</a>
             <a href="/website/DispatcherLogin.html">Dispatcher Login</a>
@@ -59,7 +70,7 @@
         </div>
 
         <h2>User Login</h2>
-    
+        <!-- login form -->
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <label class= "label" for="username"><b>Username:</b></label>
@@ -69,8 +80,13 @@
             <input type="submit" value="Login" class = "loginButton">
         </form>
         <p></p>
+        <!-- Takes to registration form -->
         <button class = "loginButton"><a href="registration.html" class="loginButton">New Rider? Register Here</a></button>
 
+        <!-- Displays when the user has entered an incorrect username
+            and password, or is not registered yet
+            Verified within views.pys
+        -->
         {% if message %}
         <div class="message">{{ message }}</div>
         {% endif %}
