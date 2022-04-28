@@ -1,3 +1,9 @@
+<!-- The simulate random page, this pulls on simulateRandom.js, as well as 
+    graph.js and request.js which use a hard coded graph of set locations in vermont
+    to test our algorithm
+    The user has the option to generate X number of random requests, the algorithm is
+    then run on those requests -->
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -67,14 +73,17 @@
         based on changes to the graph class, this may no longer function properly
     -->
       <p>How many random requests do you want to generate: <br></p>
+      <p>The Current Origin is: Middlebury College, Middlebury, VT </p>
       <input type="number" name="num" id="num">
       <button id = "create" class="submitButton">Create</button>
       <button id = "run" class="submitButton">Run</button>
-      <p>Driver Origin</p>
+     <!-- Currently commenting out the option for the dispatcher to change their location
+            but for the future this will need to be stored as input -->
+      <!-- <p>Driver Origin</p>
       <div class="form-group">
         <label for="from"><i class="far fa-dot-circle"></i></label>
         <input type="text" id="from" placeholder="Origin" class="form-control">
-        </div>
+        </div> -->
 
       <p id="demo"></p>
 
