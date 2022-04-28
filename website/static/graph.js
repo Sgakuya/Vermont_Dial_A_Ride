@@ -1,3 +1,18 @@
+// Used for simulate random, creates a graph of set and hardcoded edges 
+// that are stored in the graph object
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import{graphEdge} from './graphEdge.js';
 
 // // Local variables for storage

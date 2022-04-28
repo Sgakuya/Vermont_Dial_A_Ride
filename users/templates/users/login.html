@@ -37,11 +37,11 @@ is styled within this file.
 
 
             input[type=text], input[type=password] {
-                width: 90%;
+                width: 20%; /* CHANGING THE SIZE OF THE BAR*/
                 padding: 12px 20px;
-                margin: 0.2%;
+                margin: 0.2%;;
                 /* margin-top: 2%; */
-                margin-left: 5%;
+                margin-left: 5%;         
                 display: inline-block;
                 border: 1px solid #ccc;
                 box-sizing: border-box;
@@ -55,7 +55,7 @@ is styled within this file.
                 margin-top: 2%;
                 border: none;
                 cursor: pointer;
-                width: 90%;
+                width: 20%;/* CHANGING THE SIZE OF THE BAR*/
             }
         </style>
     </head>
@@ -74,14 +74,18 @@ is styled within this file.
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <label class= "label" for="username"><b>Username:</b></label>
+            <br>
             <input type="text" name="username" placeholder="Username">
+            <br>
             <label class  ="label" for="password"><b>Password:</b></label>
+            <br>
             <input type="password" name="password" placeholder="Password">
+            <br>
             <input type="submit" value="Login" class = "loginButton">
         </form>
-        <p></p>
+        
         <!-- Takes to registration form -->
-        <button class = "loginButton"><a href="registration.html" class="loginButton">New Rider? Register Here</a></button>
+        <button class = "loginButton"><a href="registration.html" class="loginButton">Register Here</a></button>
 
         <!-- Displays when the user has entered an incorrect username
             and password, or is not registered yet

@@ -9,6 +9,7 @@ class UserForm(forms.ModelForm):
     destination = forms.CharField(widget=forms.TextInput(attrs={'id':'to', 'placeholder':'Destination', 'class':'form-control'}))
     rider_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'to','placeholder':'Name ', 'class':'form-control'}))
     contact_number = forms.CharField(widget=forms.TextInput(attrs={'id': 'to','placeholder':'Phone Number', 'class':'form-control'}))
+    #This is where we have problems storing the date and time
     time = forms.DateTimeField(widget=forms.TimeInput(attrs={'id': 'to','placeholder':'Enter The Time for 24 hour clock', 'class':'form-control'}), 
         label="Time (In form YYYY-MM-DD hh:mm:ss)")
     trip_duration = forms.CharField(widget=forms.HiddenInput(attrs={'id':'duration', 'name':'duration', 'class':'form-control'}),

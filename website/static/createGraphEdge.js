@@ -1,3 +1,6 @@
+// creates a graph edge from one node to another, stores the starting position,
+// the finishing position, and the travel time bw start/end 
+
 
 var createGraphEdge = /** @class */ (function () {
     // do i need to pass in g?

@@ -1,4 +1,6 @@
-//set map options to center around middlebury
+
+// Used in form_page.html to calculate travel distances between two input locations
+
 console.log("Hello There");
 
 var myLatLng = { lat: 44.0153, lng: -73.1673 };
