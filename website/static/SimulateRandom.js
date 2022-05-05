@@ -1,4 +1,4 @@
-import{Graph} from './Graph.js';
+import{Graph} from './graph.js';
 import{Request1D}from './Request.js'
 var graph = new Graph();
 var requestList = [];
@@ -22,18 +22,18 @@ function createRandomRequest(){
         var p = getRandomInt(2);
         var prob = getRandomInt(10)+1;
         var time;
-        
+
         //Assigning time of the request, weighted to add more realistic times
         if(prob == 1) time = getRandomInt(37);
         else if(prob == 10) time = getRandomInt(30)+115;
         else time = getRandomInt(78)+37;
-    
+
         var s = getRandomInt(10);
         var d = getRandomInt(10);
         while(s==d){
             d = getRandomInt(10);
         }
-    
+
         //Reserved by pick up time
         if(p==0){
             console.warn("s= ", s + " d = " + d + " time = " + time*10 + " T/F: " + true + " graph: " + graph);
@@ -42,10 +42,10 @@ function createRandomRequest(){
         }else{
             console.warn("s= ", s + " d = " + d + " time = " + time*10 + " T/F: " + true + " graph: " + graph);
             var request = new Request1D(s,d,time*10,true,graph);
-            requestList.push(request); 
+            requestList.push(request);
         }
-        
-        if(requestList[requestList.length-1].pickTime<0){  
+
+        if(requestList[requestList.length-1].pickTime<0){
             requestList.pop();
             i--;
         }
@@ -68,7 +68,7 @@ function changeWeight(){
                     var n = new Request1D(requestList[m].startPos,requestList[m].finishPos,requestList[m].pickTime,false,graph);
                     temp.push(n);
                 }
-                
+
             //    console.warn("entered ChangeWeight function");
                 alg(temp,0,"Middlebury College",i,j,k);
 
@@ -87,11 +87,11 @@ function changeWeight(){
 }
 
 function alg(list,time,origin,w1,w2,w3){
-  
+
     for(var i=0;i<list.length;i++){
         list[i].setf(w1,w2,w3,graph.getEdgeWeight(origin,list[i].startPos),list[i].finishTime,list[i].getX3(list,graph));
     }
-    
+
     list.sort(compare);
 
     //remove all the illegal requests
@@ -99,13 +99,15 @@ function alg(list,time,origin,w1,w2,w3){
         var r = list[i];
 
         //Allowing 15 minutes delay
-        if(r.pickTime < time + 15){
+        //if(r.pickTime < time + 15){
+        if(r.pickTime < time){
             list.splice(i,1);
             i--;
             continue;
         }
-        
-        if(graph.getEdgeWeight(origin,r.startPos) + time + 15>r.pickTime){
+
+        //if(graph.getEdgeWeight(origin,r.startPos) + time + 15>r.pickTime){
+        if(graph.getEdgeWeight(origin,r.startPos) + time>r.pickTime){
             list.splice(i,1);
             i--;
         }
@@ -125,7 +127,7 @@ function alg(list,time,origin,w1,w2,w3){
             r.shift = 15;
         }
 
-        
+
         serveList.push(r);
         time = r.finishTime;
         origin = r.finishPos;
@@ -135,7 +137,7 @@ function alg(list,time,origin,w1,w2,w3){
     }
 }
 
-//Shows the data in a table, gets the individual results 
+//Shows the data in a table, gets the individual results
 function showData(){
     var counter = 1;
 
@@ -151,14 +153,14 @@ function showData(){
             var shift = r.insertCell();
 
 
-            //inputting data ainto those cells 
+            //inputting data ainto those cells
             requestNum.innerHTML = "Request " + counter;
             startPosition.innerHTML += serveList[i].startPos;
             finishPosition.innerHTML += serveList[i].finishPos;
             pickTime.innerHTML += Math.floor(serveList[i].pickTime/60) + ':' +  ((serveList[i].pickTime%60 < 10) ? ("0" + serveList[i].pickTime%60) : serveList[i].pickTime%60);
             d.innerHTML += Math.floor(serveList[i].finishTime/60) + ":" + ((serveList[i].finishTime%60 < 10) ? ("0" + serveList[i].finishTime%60) : serveList[i].finishTime%60);
             shift.innerHTML += serveList[i].shift + " min earlier";
-            
+
             counter ++;
     }
 }
@@ -168,7 +170,7 @@ function showData(){
 function run(){
     // For allowing drivers to change their starting locations
     var loc = document.getElementById("from")
-    console.warn(loc.value)
+    //console.warn(loc.value)
 
     changeWeight();
     alg(requestList,0,"Middlebury College",weights[0],weights[1],weights[2]);
@@ -201,11 +203,11 @@ document.getElementById('create').addEventListener('click', createRandomRequest)
 document.getElementById('create').addEventListener('click', show);
 document.getElementById('run').addEventListener('click', run);
 
-//create autocomplete objects for all inputs
-var options = {
-    types: ['geocode', 'establishment']
-}
+// //create autocomplete objects for all inputs
+// var options = {
+//     types: ['geocode', 'establishment']
+// }
 
-//Autocomplete for the starting location
-var input1 = document.getElementById("from");
-var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+// //Autocomplete for the starting location
+// var input1 = document.getElementById("from");
+// var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
