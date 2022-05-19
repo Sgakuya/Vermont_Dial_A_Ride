@@ -11,6 +11,8 @@ Using a combination of routing algorithms, API calls, and django to change the c
   ### Usage
   For Usage, visit the page: ____Insert Website Link____. 
   
+  To create a local copy on your desktop, watch this video: https://youtu.be/xSqp2LjHDFg
+  
   For more background on the algorithm and website details, visit this link for a holistic overview of motivation and development: https://middleburycollege-my.sharepoint.com/:w:/g/personal/llorenz_middlebury_edu/EaSkns-D_-VAr100pDSxGQUBfWzqhgjjsc0GV7KVXT_6TA?e=Veyvdy
   
   Much of the link above touches on java code written to develop these algorithms, the files to these are located here:
