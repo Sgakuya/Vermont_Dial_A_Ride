@@ -13,4 +13,9 @@ Using a combination of routing algorithms, API calls, and django to change the c
   
   For more background on the algorithm and website details, visit this link for a holistic overview of motivation and development: https://middleburycollege-my.sharepoint.com/:w:/g/personal/llorenz_middlebury_edu/EaSkns-D_-VAr100pDSxGQUBfWzqhgjjsc0GV7KVXT_6TA?e=Veyvdy
   
-An Aside: To access the link above, you must be a member of Middlebury College. I am currently working on a way arround a restricted shareable link.  
+  Much of the link above touches on java code written to develop these algorithms, the files to these are located here:
+  https://github.com/llorenz29/1D-Dial-A-Ride-Optimization
+  
+  
+An Aside: To access the link above, you must be a member of Middlebury College. I am currently working on a way arround a restricted shareable link. 
+
