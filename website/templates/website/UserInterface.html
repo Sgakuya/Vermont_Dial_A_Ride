@@ -1,16 +1,16 @@
 <html>
 <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <title>Submit Your Request</title>
     {% load static %}
     <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
     <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'barStyle.css'%}">
-   
+
 </head>
 
 <body>
@@ -22,11 +22,11 @@
         <a href="/website/busRoutes.html">Bus Routes</a>
         <a class ="active" href="/users/login.html">Logout</a>
     </div>
-  
+
     <h2>Welcome, {{ request.user }}</h2>
     <!-- using bootstrap for styling -->
 
-        <div class="jumbotron"> 
+        <div class="jumbotron">
             <div class="container-fluid">
                 <!-- input h1 and p title here  -->
                 <h4>Create Your Ride Here:</h4>
@@ -38,13 +38,13 @@
                             <div class="form-group">
                                 <label for="from"><i class="far fa-dot-circle"></i></label>
                                 <input type="text" id="from" placeholder="Origin" class="form-control">
-                                   
+
                             </div>
                             <!-- For the destination -->
                             <div class="form-group">
                                 <label for="to"><i class="fas fa-map-pin"></i></label>
                                 <input type="text" id="to" placeholder="Destination" class="form-control">
-                            </div>  
+                            </div>
                             <!-- For the type of pickup/dropoff -->
                             <div class = "form-group">
                                     <label for="ReserveMethod" class="titleText">Reserving Method</label><br>
@@ -53,36 +53,48 @@
                                       <option value="Pick Up Time">Pick Up Time</option>
                                       <option value="Drop Off Time">Drop Off Time</option>
                                    </select>
-                                
+
+                            <!-- for the users name -->
+                            <div class="form-group">
+                                <label for="your_name">Passenger's name: </label>
+                                <input id="your_name" type="text" name="your_name" class="form-control" placeholder="Name">
+                            </div>
+
+                            <!-- for the users phone no -->
+                            <div class="form-group">
+                                <label for="your_no">Passenger's phone number: </label>
+                                <input id="your_no" type="text" name="your_no" class="form-control" placeholder="Phone no.">
+                            </div>
+
                             </div>
                             <!-- for the pickup/dropoff time -->
                             <div class="form-group">
                                     <label for="pickTime"><i class="far fa-clock"></i></label>
                                     <label for="pickTime" class="clickMe">Click Me!</label>
                                     <input type="time" id="pickTime" placeholder="Pick Up Time" class="form-control" required>
-                            </div> 
+                            </div>
                              <!--for the date  -->
                             <div class="form-group">
                                     <label for="date"><i class="far fa-calendar-alt"></i></label>
                                     <label for="pickTime" class="clickMe">Click Me!</label>
                                     <input type="date" id="pickDate" placeholder="Date" class="form-control">
-                            </div> 
+                            </div>
                     </form>
-                
+
                     <button class="btn btn-success btn-lg " onclick="calcRoute();">Submit Request<i class="far fa-paper-plane"></i></button>
-  
+
             </div>
-            
+
 
             <div id="output"></div>
 
-        
+
         </div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKuXI2x-m6OtzH6kbcBMRYcz9xoQ-BcLQ&libraries=places"></script>
 
-    
+
     <script src="{% static 'calcRoute.js' %}"></script>
 
 </body>

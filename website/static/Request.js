@@ -16,7 +16,7 @@
 
 var Request1D = /** @class */ (function () {
     //input similar to the original java code
-    function Request1D(s, f, pt, dot,g) {
+    function Request1D(s, f, pt, dot,g ) {
         if (((typeof s === 'number') || s === null) && ((typeof f === 'number') || f === null) && ((typeof pt === 'number') || pt === null) && ((typeof dot === 'boolean') || dot === true) && ((typeof g === 'object') || g === null) ) {
             var __args = arguments;
 
@@ -30,6 +30,8 @@ var Request1D = /** @class */ (function () {
             this.f_value = 0;
             this.isDot = dot;
             this.shift = 0;
+            //intended to hold list of drivers assigned to this request
+            this.drivers = [];
         }
         else if (((typeof s === 'string') || s === null) && ((typeof f === 'string') || f === null) && ((typeof g === 'object') || g === null) && ((typeof pt === 'number') || pt === null) && ((typeof pt === 'number') || pt === null) && ((typeof dot === 'boolean') || dot === false) ) {
             var __args = arguments;
@@ -44,6 +46,9 @@ var Request1D = /** @class */ (function () {
             this.f_value = 0;
             this.isDot = dot;
             this.shift = 0;
+            //intended to hold list of drivers assigned to this request
+            this.drivers = [];
+
         }
         else if (((typeof s === 'number') || s === null) && ((typeof f === 'number') || f === null) && ((typeof g === 'object') || g === null) && ((typeof pt === 'number') || pt === null) && ((typeof pt === 'number') || pt === null) && ((typeof dot === 'boolean') || dot === false) ) {
             var __args = arguments;
@@ -58,10 +63,20 @@ var Request1D = /** @class */ (function () {
             this.f_value = 0;
             this.isDot = dot;
             this.shift = 0;
+            //intended to hold list of drivers assigned to this request
+            this.drivers = [];
+
         }
         else
             throw new Error('invalid overload');
     }
+
+
+    //need to check, might not work as intended
+    Request1D.prototype.addDriver = function(d){
+        this.drivers.push(d);
+    }
+
 
     //Get the X3 value, else return 100,000
     Request1D.prototype.getX3 = function(lrl,g){
@@ -74,7 +89,7 @@ var Request1D = /** @class */ (function () {
                 if(distToNext<min) min = distToNext;
         }
         }
-    
+
         return min;
     }
     //Sets f value
@@ -103,7 +118,7 @@ var Request1D = /** @class */ (function () {
         return "StartPos: " + this.startPos + ", FinishsPos: " + this.finishPos + ", (" + (this.pickTime / 60 | 0) + ":" + this.pickTime % 60 + "," + (this.finishTime / 60 | 0) + ":" + this.finishTime % 60 + "); ";
     };
 
-   
+
     /**
      *
      * @param {Request1D} lr

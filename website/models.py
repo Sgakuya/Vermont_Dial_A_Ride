@@ -15,12 +15,6 @@ class Location(models.Model):
 
 class Ride(models.Model):
     # CASCADE --> If delete a city, will also delete all the relevant rides
-    #origin = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="startPos")
-    #destination = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="finishPos")
-    #pickTime = models.TimeField()
-    #finishTime = models.IntegerField()
-    #date = models.D
-    #duration = models.IntegerField()
     origin = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)
     rider_name = models.CharField(default="", max_length=64)
@@ -29,6 +23,16 @@ class Ride(models.Model):
     time = models.DateTimeField(default=datetime.now,blank=True)
     trip_duration = models.CharField(default="", max_length=30)
 
+    ride_status = models.CharField(default="pending", max_length=30)
+    roundtrip = models.CharField(default="", max_length=30)
+    rtime = models.DateTimeField(default=datetime.now,blank=True)
+    share = models.CharField(default="", max_length=30)
+    needs = models.CharField(default="", max_length=300)
+
+    def __str__(self):
+        return f"{self.origin} to {self.destination} pickTime: {self.time}"
+
+
 class Edge(models.Model):
     origin = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="origin")
     destination = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="destination")
@@ -36,6 +40,6 @@ class Edge(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}: {self.origin} to {self.destination} from {self.pickTime} to {self.finishTime}" 
+        return f"{self.id}: {self.origin} to {self.destination} from {self.pickTime} to {self.finishTime}"
 
 

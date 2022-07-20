@@ -4,6 +4,7 @@ var graph = new Graph();
 var requestList = [];
 var weights = [0,0,0];
 var serveList = [];
+var checkList = [];
 
 
 
@@ -80,6 +81,7 @@ function changeWeight(){
                     maxSize = serveList.length;
                 }
                 serveList = [];
+                checkList = [];
             }
         }
     }
@@ -106,7 +108,6 @@ function alg(list,time,origin,w1,w2,w3){
             continue;
         }
 
-        //if(graph.getEdgeWeight(origin,r.startPos) + time + 15>r.pickTime){
         if(graph.getEdgeWeight(origin,r.startPos) + time>r.pickTime){
             list.splice(i,1);
             i--;
@@ -118,10 +119,12 @@ function alg(list,time,origin,w1,w2,w3){
         var r = list[0];
         var T = (r.pickTime-time) - graph.getEdgeWeight(origin,r.startPos);
         if(T<=15 && T>=0){
+            checkList.push(T);
             r.finishTime -= T;
             r.pickTime -= T;
             r.shift = T;
         }else if(T>15){
+            checkList.push(15);
             r.finishTime -= 15;
             r.pickTime -= 15;
             r.shift = 15;
@@ -165,6 +168,28 @@ function showData(){
     }
 }
 
+function check() {
+    //loop backwards through our bool checklist to see if it is possible
+    //to do the corresponding request later
+    for(let i = serveList.length-1; i>-1; i--){
+        //if shifted last request
+        var r = serveList[i];
+        if(i == checkList.length-1){
+            r.finishTime += checkList[i];
+            r.pickTime += checkList[i];
+            r.shift -= checkList[i];
+        }else{ //if not last request
+            if (serveList[i+1].pickTime - (r.finishTime + 15 ) - graph.getEdgeWeight(r.finishPos,serveList[i+1].startPos) >= 0){
+                r.finishTime += checkList[i];
+                r.pickTime += checkList[i];
+                r.shift -= checkList[i];
+            }
+            continue;
+        }
+
+    }
+}
+
 
 //Function that runs the alg and displays the data
 function run(){
@@ -174,8 +199,10 @@ function run(){
 
     changeWeight();
     alg(requestList,0,"Middlebury College",weights[0],weights[1],weights[2]);
+    check();
     showData();
     //empty the lists
+    checkList = [];
     serveList = [];
     requestList = [];
 }

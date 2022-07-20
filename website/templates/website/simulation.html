@@ -5,24 +5,24 @@
          existing requests
     -->
     <title>Simulation Page</title>
-    
+
     {% load static %}
 	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
     <style>
 
-    
+
         .existing{
             position: absolute;
             margin-left: 55%;
             margin-top: 5%;
             width: 40%;
             padding: 12px 20px;
-   
+
             display: inline-block;
             border: 1px solid black;
             border-radius: 4px;
             box-sizing: border-box;
-   
+
             cursor: pointer;
             background-color: #333333;
             color: white;
@@ -37,13 +37,13 @@
             z-index: -1;
             width:100%;
             height:100%;
-	        background: linear-gradient(to right, 
-	                              transparent 0%, 
-	                              transparent calc(50% - 0.81px), 
-	                              black calc(50% - 0.8px), 
-	                              black calc(50% + 0.8px), 
-	                              transparent calc(50% + 0.81px), 
-	                              transparent 100%); 
+	        background: linear-gradient(to right,
+	                              transparent 0%,
+	                              transparent calc(50% - 0.81px),
+	                              black calc(50% - 0.8px),
+	                              black calc(50% + 0.8px),
+	                              transparent calc(50% + 0.81px),
+	                              transparent 100%);
 	}
 
         .random{
@@ -52,12 +52,12 @@
             margin-top: 5%;
             width: 40%;
             padding: 12px 20px;
-   
+
             display: inline-block;
             border: 1px solid black;
             border-radius: 4px;
             box-sizing: border-box;
-   
+
             cursor: pointer;
             background-color: #333333;
             color: white;
@@ -77,7 +77,7 @@
         .list{
             position:absolute;
             width: 25%;
-            
+
             margin-left: 62%;
             margin-top:14%;
         }
@@ -90,14 +90,16 @@
         <li><a href="DispatcherInterface.html">Go Back</a></li>
         <li><a href="RequestPage.html">View All The Requests</a></li>
         <li><a href="simulation.html">Run Simulation</a></li>
-        <li><a href="getSchedule.html">Get Schedule</a></li>
+        <li><a href="SimulateExisiting.html">Get Schedule</a></li>
+        <!--Line below makes button to link multidriver content, commented due to incompletion-->
+        <li><a href="MultiDriver.html">MultiDriver</a></li>
       </ul>
-      
+
       <!-- Button to simulate on existing requests -->
       <div>
           <a href="SimulateExisiting.html">
               <button class="existing">
-                  <span>Simulate based on existing requests</span> 
+                  <span>Simulate based on existing requests</span>
                 </button>
             </a>
       </div>

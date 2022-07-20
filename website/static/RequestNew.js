@@ -1,7 +1,7 @@
 import{graphNew} from './graphNew.js';
 var RequestNew = /** @class */ (function () {
     //input similar to the original java code
-    function RequestNew(s, f, pt, g,r,u) { 
+    function RequestNew(s, f, pt, g,r,c ,st) {
         if((typeof g === 'object')){
 
         this.startPos = s;
@@ -12,7 +12,8 @@ var RequestNew = /** @class */ (function () {
         this.f_value = 0;
         this.shift = 0;
         this.rider = r;
-        this.username = u;
+        this.contact_number = c;
+        this.ride_status = st;
         }
     }
 
@@ -27,7 +28,7 @@ var RequestNew = /** @class */ (function () {
                 if(distToNext<min) min = distToNext;
         }
         }
-    
+
         return min;
     }
     //Sets f value
@@ -56,7 +57,7 @@ var RequestNew = /** @class */ (function () {
         return "StartPos: " + this.startPos + ", FinishsPos: " + this.finishPos + ", (" + (this.pickTime / 60 | 0) + ":" + this.pickTime % 60 + "," + (this.finishTime / 60 | 0) + ":" + this.finishTime % 60 + "); ";
     };
 
-   
+
     /**
      *
      * @param {RequestNew} lr

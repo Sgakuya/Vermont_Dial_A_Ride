@@ -20,6 +20,12 @@ class Migration(migrations.Migration):
                 ('pickTime', models.IntegerField()),
                 ('finishTime', models.IntegerField()),
                 ('duration', models.IntegerField()),
-            ],
+                ('ride_status', models.CharField(max_length=30)),
+                ('roundtrip', models.CharField(max_length=30)),
+                ('rtime', models.IntegerField()),
+                ('share', models.CharField(max_length=30)),
+                ('needs', models.CharField(max_length=300)),
+
+                ],
         ),
     ]

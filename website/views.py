@@ -9,7 +9,6 @@ from website.forms import UserForm
 from django.contrib import messages
 
 
-
 destinations = []
 
 # Create your views here.
@@ -32,10 +31,10 @@ def users(request):
         return render(request,"/users/login.html")
 
 def disLog(request):
-        return render(request, "website/dispatcherLogin.html")
+        return render(request, "website/DispatcherLogin.html")
 
 def dis(request):
-        return render(request, "website/dispatcherInterface.html")
+        return render(request, "website/DispatcherInterface.html")
 
 def simulation(request):
         return render(request, "website/simulation.html")
@@ -44,7 +43,7 @@ def matrix(request):
         return render(request,"website/distMatrix.html")
 
 def simRan(request):
-        return render(request, "website/simulateRandom.html")
+        return render(request, "website/SimulateRandom.html")
 
 def getSchedule(request):
         return render(request, "website/getSchedule.html")
@@ -70,7 +69,16 @@ def DeletedPage(request):
 
 def cGraph(request):
         return render(request, "website/createGraph.html")
-        
+
+def multiDriver(request):
+        return render(request, "website/MultiDriver.html")
+
+def mulSimRand(request):
+        return render(request, "website/MultiSimulateRandom.html")
+
+def mulSimEx(request):
+        return render(request, "website/MultiSimulateExisting.html")
+
 def user_view(request):
         if request.method == "POST":
                 # Accessing username and password from form data
@@ -84,15 +92,15 @@ def form_page(request):
         form = UserForm()
         if request.method == "POST":
                 form = UserForm(request.POST)
-
                 if form.is_valid():
                         post = form.save(commit=False)
                         post.user_name = request.user
                         post.save()
+
                         #return UserPage(request)
                 else:
                         messages.error(request,"Please Click Confirm Before Submit")
-        
+
         return render(request, "website/form_page.html",{'form':form})
 
 def userRequestPage(request):
@@ -105,7 +113,19 @@ def delete_post(request, pk):
         Ride.objects.filter(id=pk).delete()
 
         items = Ride.objects.all()
-        
+
+        context = {
+                #'form':form,
+                'items' : items,
+        }
+        return render(request,template,context)
+
+def delete_post2(request, pk):
+        template = 'website/DeletedDispatcher.html'
+        Ride.objects.filter(id=pk).delete()
+
+        items = Ride.objects.all()
+
         context = {
                 #'form':form,
                 'items' : items,

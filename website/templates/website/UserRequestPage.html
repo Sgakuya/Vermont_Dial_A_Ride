@@ -6,15 +6,15 @@
     <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
     <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'barStyle.css'%}">
     <title>Your Requests</title>
 
     <style>
-    
-        /* 
+
+        /*
         Styling for the table, giving it a clean look
         */
         .tableContent{
@@ -27,7 +27,7 @@
             min-width: 400px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
-    
+
         .tableContent thead tr{
             color: white;
             background: #333333;
@@ -35,46 +35,46 @@
             text-align: left;
             font-weight: bold;
         }
-    
+
         .tableContent th,
         .tableContent td{
             text-align: left;
             padding: 12px 0px;
         }
-    
+
         .tableContent tbody tr{
             border-bottom: 1px solid #dddddd;
         }
-    
+
         .tableContent tbody tr:nth-of-type(even){
             background-color: #f3f3f3;
         }
-    
+
         .tableContent tbody tr:last-of-type{
             border-bottom: 2px solid #333333;
         }
-    
+
         .topLeft{
             border-top-left-radius: 1%;
         }
-    
+
         .topRight{
             border-top-right-radius: 1%;
         }
-        
+
         .delete{
         width: 70%;
         /* padding: 12px 20px; */
-        
+
         display: inline-block;
         border: 1px solid black;
         border-radius: 10px;
-    
+
         background-color: red;
         color:white;
         cursor: pointer;
         }
-    
+
         .delete::before{
             content: '';
             z-index: -1;
@@ -83,28 +83,39 @@
             clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
             transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
         }
-    
+
         .delete:hover{
             background-color: darkred;
         }
-    
+
         h2{
             margin-left: 2%;
             font-family: "Monaco";
             text-decoration: underline;
         }
-    
+
         p{
-            margin-left: 2%;
+            /*margin-left: 15%;*/
+            /*margin-right: 15%;*/
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
+            text-align: center;
+            color: red;
             font-family: "Monaco";
         }
-    
+
+        p2{
+            font-family: "Monaco";
+            text-decoration: overline;
+        }
+
         h4{
             font-family: "Monaco";
             color: #dddddd;
         }
     </style>
-    
+
     </head>
 
 
@@ -120,7 +131,11 @@
 
     <!-- Loading in requests from the Django database -->
     <h1>Welcome, {{ request.user }}</h1>
-    Your Requests:
+    <p> **Please remember to check your requests on the morning
+    of the desired request to confirm status**</p>
+    <p2>
+        Your Requests:
+    </p2>
     <table class = "tableContent" id="table">
         <thead>
             <th>Request #</th>
@@ -129,6 +144,7 @@
             <th>Pick Up Time</th>
             <th>Trip Duraiton</th>
             <th>Rider</th>
+            <th>Status</th>
             <th>Delete</th>
             <th></th>
         </thead>
@@ -141,15 +157,16 @@
         <td>{{ Ride.time }}</td>
         <td>{{ Ride.trip_duration }}</td>
         <td>{{ Ride.rider_name }}</td>
+        <td>{{ Ride.ride_status}}</td>
         <td><a href="{% url 'delete_post' pk=Ride.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" >Delete</a></td>
-    </tr> 
+    </tr>
         {% endifequal %}
     {% endfor %}
     </table>
-    
+
 
     <p></p>
-  
+
     <!-- Loading in the list of requests from local storage. Formatted much more
     nicely than the django load, maybe we need to fix that?
  -->
@@ -163,7 +180,7 @@
     for (var i = 1, len = rows.length; i < len; i++) {
         rows[i].children[0][text] = i + rows[i].children[0][text];
     }
-        
+
     </script>
 
     </body>

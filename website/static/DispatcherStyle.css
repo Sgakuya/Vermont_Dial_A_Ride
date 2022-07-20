@@ -1,13 +1,39 @@
-/* 
+/*
 Styling for dispacher login pg
 */
+
+.delete{
+width: 70%;
+/* padding: 12px 20px; */
+
+display: inline-block;
+border: 1px solid black;
+border-radius: 10px;
+
+background-color: red;
+color:white;
+cursor: pointer;
+}
+
+.delete::before{
+    content: '';
+    z-index: -1;
+    background: #e7e7e7;
+    -webkit-clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+    clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+    transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
+}
+
+.delete:hover{
+    background-color: darkred;
+}
 
 body{
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 ul {
 list-style-type: none;

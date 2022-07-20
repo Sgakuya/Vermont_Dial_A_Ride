@@ -42,36 +42,36 @@ function calcRoute() {
         var sPos = document.getElementById("from").value;
         var fPos = document.getElementById("to").value;
 
-        
 
-        if (status == google.maps.DirectionsStatus.OK 
-            && sPos.includes('VT') 
-            && fPos.includes('VT') 
+
+        if (status == google.maps.DirectionsStatus.OK
+            && sPos.includes('VT')
+            && fPos.includes('VT')
             && sPos!=fPos) {
-    
+
             //Get distance and time
             const output = document.querySelector('#output');
-            output.innerHTML = "<div class='alert-success'><i class='fas fa-shuttle-van'></i> Your Request has Been Submitted <i class='fas fa-shuttle-van'></i> <br/> From (A): " + document.getElementById("from").value + ".<br />To (B): " + document.getElementById("to").value +  ".<br />Travel Time : " + result.routes[0].legs[0].duration.text + ".</div>";
+            output.innerHTML = "<div class='alert-success'><i class='fas fa-shuttle-van'></i> Your Request has Been Confirmed <i class='fas fa-shuttle-van'></i> <br/> From (A): " + document.getElementById("from").value + ".<br />To (B): " + document.getElementById("to").value +  ".<br />Travel Time : " + result.routes[0].legs[0].duration.text + ".</div>";
             console.log(result.routes[0].legs[0].duration.text);
-            
+
             document.querySelector('#duration').value = result.routes[0].legs[0].duration.text;
             console.log(document.getElementById("duration").value);
 
-            
-            
-            
+
+
+
             //taking from autofill
             const startPos = document.getElementById("from").value;
             const finishPos = document.getElementById("to").value;
-            
+
             //for deciding for or against pickup time
 
             // var requestMethod = false;
             // if(document.getElementById("requestMethod").value == "Pick Up Time"){
             //     requestMethod = true;
             // }
-                
-                      
+
+
             //Taking all of the variables and storing them in variables
             // var spl = document.getElementById("pickTime").value.split(':');
             // var hrs = parseInt(spl[0]) * 60;
@@ -83,11 +83,11 @@ function calcRoute() {
             // //converting the edgeweight into a value
             // const edgeWeight = Math.round((result.routes[0].legs[0].duration.value)/60);
 
-            // g.printGraph();  
+            // g.printGraph();
             console.log("Graph");
 
-            
-            
+
+
             //display route
             directionsDisplay.setDirections(result);
         } else {

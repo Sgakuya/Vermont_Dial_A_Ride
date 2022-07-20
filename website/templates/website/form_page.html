@@ -9,11 +9,11 @@
     <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
     <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'barStyle.css'%}">
-    
+
     </head>
 
 
@@ -27,24 +27,124 @@
         <a class ="active" href="/users/login.html">Logout</a>
     </div>
 
-    <h2>Welcome, {{ request.user }}</h2>
+    <h1>Welcome, {{ request.user }}</h1>
 
-    <div class="jumbotron"> 
+    <div class="jumbotron">
         <div class="container-fluid">
             <h4>Create Your Ride Here:</h4>
             <div id="googleMap"></div>
-            <h1>Please Sign Up Here</h1>
             <form method = "POST", class="form-horizontal" onsubmit="calcRoute();">
-                {{ form.as_p }}
+                <!-- For the origin -->
+                <div class="form-group">
+                    <label for="from"><i class="far fa-dot-circle"></i></label>
+                    <input type="text" id="from" name="origin" placeholder="Origin"
+                    class="form-control" required>
+                </div>
+
+                <!-- For the destination -->
+                <div class="form-group">
+                    <label for="to"><i class="fas fa-map-pin"></i></label>
+                    <input type="text" name="destination" id="to" placeholder="Destination"
+                    class="form-control" required>
+                </div>
+
+                <!-- For the type of pickup/dropoff -->
+                <div class = "form-group">
+                        <label for="ReserveMethod" class="titleText">Reserving Method</label><br>
+                        <select class="form-control" id="requestMethod">
+                          <option disabled selected value> -- select an option -- </option>
+                          <option value="Pick Up Time">Pick Up Time</option>
+                          <option value="Drop Off Time">Drop Off Time</option>
+                       </select>
+                </div>
+
+                <!-- for the users name -->
+                <div class="form-group">
+                    <label for="to">Passenger's name: </label>
+                    <input type="text" name="rider_name" id="to" placeholder="Name"
+                    class="form-control" required></p>
+                </div>
+
+                <!-- for the users phone no -->
+                <div class="form-group">
+                    <label for="to">Passenger's phone number: </label>
+                    <input type="text" name="contact_number" id="to" placeholder="Phone Number"
+                    class="form-control" required></p>
+                </div>
+
+                 <!--for the date and pickup/dropoff time-->
+                <div class="form-group">
+                        <label for="to"><i class="far fa-calendar-alt"></i></label>
+                        <label for="pickTime" class="clickMe">Click Me!</label>
+                        <input type="datetime-local" name= "time" id="to" class="form-control" required>
+                </div>
+
+                 <!--round trip-->
+                <div class="form-group">
+                    <label for="roundtrip">Do you want a round trip? </label>
+                    <select class="form-control" id="requestMethod" name="roundtrip">
+                          <option disabled selected value> -- select an option -- </option>
+                          <option value="Less">Yes, after less than 15 minutes</option>
+                          <option value="More">Yes, after more than 15 minutes </option>
+                          <option value="No">No, I don't need a ride back</option>
+                    </select>
+                </div>
+
+                 <!--Roundtrip time:-->
+                <div data-show-if="roundtrip:More" class="form-group">
+                        <label for="to"><i class="far fa-calendar-alt"></i></label>
+                        <label for="rtime" class="clickMe">Click Me!</label>
+                        <input type="datetime-local" name= "rtime" id="to" class="form-control">
+                </div>
+
+                 <!--confirm if rider is ok with sharing ride-->
+                <div class="form-group">
+                    <label for="share">Can you share the ride with another passenger? </label>
+                    <select class="form-control" id="requestMethod" name="share">
+                          <option disabled selected value> -- select an option -- </option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                    </select>
+                </div>
+
+                 <!--mobility needs-->
+                <div class="form-group">
+                    <label for="needs">Do you have any mobility needs? </label>
+                    <input type="text" name="needs" id="to"
+                    class="form-control" ></p>
+                </div>
+
+                <input type="hidden" name="trip_duration" id="duration" name="duration" class="form-control"></p>
+                <!--<input type="hidden" name="ride_status" id="ride_status" name="ride_status" class="form-control" value= "pending"></p>-->
+                <input type="hidden" name="csrfmiddlewaretoken" value="CMLA4MsfWvQlxwUdltbDzxingTIouiDkxLCOJw8sIm1uov8WsuRa5fx9Ta3W6aiq">
+
                 {% csrf_token %}
-                <input type="submit" class="btn btn-success btn-lg" value="Submit">
+                <input type = "button" class = "btn btn-success btn-lg" value = "Confirm" onclick = "calcRoute();btnSubmit();">
+                <div style = "position:absolute; left:650px; top:790px">
+                <input type="submit" class="btn btn-success btn-lg" value="Submit" onclick = "showAlert();" style="visibility:hidden;" id="submit">
+                </div>
+
             </form>
-            <button class="btn btn-success btn-lg" id="confirm" onclick="calcRoute();">Confirm<i class="far fa-paper-plane"></i></button>
+
         </div>
+
         <div id="output"></div>
     </div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOTdN2pl2XFgJ-IGpVTwxSlorrMjQ2NDE&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKuXI2x-m6OtzH6kbcBMRYcz9xoQ-BcLQ&libraries=places"></script>
         <script src="{% static 'calcRoute.js' %}"></script>
+
+        <script LANGUAGE="JavaScript">
+        function btnSubmit()
+        {
+            {document.getElementById("submit").style.visibility="visible";}
+
+        }
+        </script>
+        <script>
+        function showAlert() {
+        alert ("Your request has been submitted! Please check again on the morning of your ride to make sure it has been scheduled.");
+        }
+        </script>
 
     </body>
 </html>
