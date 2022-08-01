@@ -154,7 +154,7 @@
         // gets the request list from localstorage, puts the individual requests
         // into the array
         function getData(){
-            var str = localStorage.getItem("RequestList");
+            var str = localStorage.key(0);
             if(str != null){
                 arr = JSON.parse(str);
             }

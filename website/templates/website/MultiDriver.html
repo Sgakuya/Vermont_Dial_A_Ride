@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Page that allows the user to choose between simulating random requests and
+         existing requests with multidriver
+    -->
+    <title>Simulation Page</title>
+
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+    <style>
+
+
+        .existing{
+            position: absolute;
+            margin-left: 55%;
+            margin-top: 5%;
+            width: 40%;
+            padding: 12px 20px;
+
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        .existing:hover{
+            background-color: #111111;
+        }
+
+        .line-in-middle {
+            position:absolute;
+            z-index: -1;
+            width:100%;
+            height:100%;
+	        background: linear-gradient(to right,
+	                              transparent 0%,
+	                              transparent calc(50% - 0.81px),
+	                              black calc(50% - 0.8px),
+	                              black calc(50% + 0.8px),
+	                              transparent calc(50% + 0.81px),
+	                              transparent 100%);
+	}
+
+        .random{
+            position:absolute;
+            margin-left: 5%;
+            margin-top: 5%;
+            width: 40%;
+            padding: 12px 20px;
+
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        .random:hover{
+            background-color: #111111;
+        }
+
+        .dice{
+            position:absolute;
+            width: 25%;
+            margin-left: 10%;
+            margin-top:15%;
+        }
+
+        .list{
+            position:absolute;
+            width: 25%;
+
+            margin-left: 62%;
+            margin-top:14%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Search bar -->
+    <ul>
+        <li><a href="DispatcherInterface.html">Go Back</a></li>
+        <li><a href="RequestPage.html">View All The Requests</a></li>
+        <li><a href="simulation.html">Run Simulation</a></li>
+        <li><a href="SimulateExisiting.html">Get Schedule</a></li>
+        <li><a href="MultiDriver.html">MultiDriver</a></li>
+      </ul>
+
+      <!-- Button to simulate on existing requests -->
+      <div>
+          <a href="MultiSimulateExisting.html">
+              <button class="existing">
+                  <span>MultiDriver existing Request Simulation</span>
+                </button>
+            </a>
+      </div>
+
+      <!-- Dice and list icons -->
+      <img src="/static/Dice.png" class="dice">
+      <img src="/static/List.png" class="list">
+
+      <!-- Split by black line down middle of page -->
+      <div class="line-in-middle"></div>
+
+      <!-- Button to simulate on random requests -->
+      <div>
+        <a href="MultiSimulateRandom.html">
+            <button class = "random">
+                MultiDriver random Request Simulation
+            </button>
+        </a>
+    </div>
+
+</body>
+
+</html>

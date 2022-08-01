@@ -7,6 +7,8 @@ from .models import Ride
 from users.models import User
 from website.forms import UserForm
 from django.contrib import messages
+from django.template import loader
+
 
 
 destinations = []
@@ -131,3 +133,23 @@ def delete_post2(request, pk):
                 'items' : items,
         }
         return render(request,template,context)
+
+# trying to update rides
+def update(request, pk):
+    ride = Ride.objects.get(id=pk)
+    template = 'website/update.html'
+
+    context = {
+        'Ride' : ride,
+        }
+
+    return render(request, template, context)
+
+def updaterecord(request, pk):
+    time = request.POST['time']
+    status = request.POST['ride_status']
+    ride = Ride.objects.get(id=pk)
+    ride.time = time
+    ride.ride_status = status
+    ride.save()
+    return HttpResponseRedirect(reverse('simExi'))

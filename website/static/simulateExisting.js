@@ -365,19 +365,34 @@ function alg(list,time,origin,w1,w2,w3){
 
         }
 
+        // var mysql = require('sqlite3');
+
+        // var con = mysql.createConnection({
+        //   database: "mydb"
+        // });
+
+        // con.connect(function(err) {
+        //   if (err) throw err;
+        //   var sql = "UPDATE website_ride SET ride_status = 'testing'";
+        //   con.query(sql, function (err, result) {
+        //     if (err) throw err;
+        //     console.log(result.affectedRows + " record(s) updated");
+        //   });
+        // });
+
 
         serveList.push(r);
         r.ride_status = "accepted";
-        for(let i=0; i<requestList.length; i++){
-            var cells = rows[i+1].getElementsByTagName("td");
-            var iStart = splitAndFormat(requestList[i].startPos);
-            var iFin = splitAndFormat(requestList[i].finishPos);
-            var iPick = requestList[i].pickTime;
-            if(r.startPos == iStart && r.finishPos == iFin && (iPick - r.pickTime <= 15)){
-                requestList[i].ride_status = "accepted";
-                cells[7].innerText = "accepted";
-            }
-        }
+        // for(let i=0; i<requestList.length; i++){
+        //     var cells = rows[i+1].getElementsByTagName("td");
+        //     var iStart = splitAndFormat(requestList[i].startPos);
+        //     var iFin = splitAndFormat(requestList[i].finishPos);
+        //     var iPick = requestList[i].pickTime;
+        //     if(r.startPos == iStart && r.finishPos == iFin && (iPick - r.pickTime <= 15)){
+        //         requestList[i].ride_status = "accepted";
+        //         cells[7].innerText = "accepted";
+        //     }
+        // }
         time = r.finishTime;
         origin = r.finishPos;
         list.splice(0,1);
@@ -404,8 +419,19 @@ function showData(){
           var contact_number = r.insertCell();
           var ride_status = r.insertCell();
 
+        //   //Link stuff
+        //   var linkText = document.createTextNode("Edit Request #" + counter);
+        //   var link;
+        //   //link name for update url, can be changed
+        //   var whatever = "https://www.facebook.com/";
 
-          //inputting data ainto those cells
+
+        //   //inputting data ainto those cells
+        //   link = document.createElement("a");
+        //   link.setAttribute("href", "https://www.facebook.com/");
+        //   link.className = "tableContent";
+        //   link.appendChild(linkText);
+
           requestNum.innerHTML = "Request " + counter;
           startPosition.innerHTML += serveList[i].startPos;
           finishPosition.innerHTML += serveList[i].finishPos;

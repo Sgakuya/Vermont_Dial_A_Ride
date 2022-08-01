@@ -1,3 +1,7 @@
+<!--This file calls the code to run multidriver code, also has
+front end stuff which hasn't been fully implemented-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,8 +112,6 @@
           <li><a href="RequestPage.html">View All The Requests</a></li>
           <li><a href="simulation.html">Run Simulation</a></li>
           <li><a href="SimulateExisiting.html">Get Schedule</a></li>
-
-          <!--Line below makes button to link multidriver content, commented due to incompletion-->
           <li><a href="MultiDriver.html">MultiDriver</a></li>
         </ul>
         <p></p>
@@ -124,8 +126,7 @@
               <th>Pick Up Time</th>
               <th>Duration</th>
               <th>Rider</th>
-              <th>Phone #</th>
-              <th>Status</th>
+              <th>User Name</th>
               <th></th>
           </thead>
           {% for Ride in Rides %}
@@ -136,8 +137,7 @@
           <td>{{ Ride.time }}</td>
           <td>{{ Ride.trip_duration }}</td>
           <td>{{ Ride.rider_name }}</td>
-          <td>{{ Ride.contact_number }}</td>
-          <td>{{ Ride.ride_status }}</td>
+          <td>{{ Ride.user_name }}</td>
       </tr>
       {% endfor %}
       </table>
@@ -146,7 +146,9 @@
       <p></p>
 
       <!-- Need to style -->
-      <p>Driver Origin</p>
+      <p>Number of Drivers</p>
+        <input type="number" name="numDr" id="numDr">
+      <p>Driver Origins</p>
       <div class="form-group">
         <label for="from"><i class="far fa-dot-circle"></i></label>
         <input type="text" id="from" placeholder="Origin" class="form-control">
@@ -154,19 +156,18 @@
 
       <button id = "run" class="submitButton">Run Simulation</button>
 
-    <!-- List of requests in the schedule -->
       <h2>Served Requests:</h2>
       <table class = "tableContent" id="table">
           <thead>
-              <th>Request#</th>
+              <th>Request #</th>
               <th>Starting Position</th>
               <th>Finishing Position</th>
               <th>Pick Up Time</th>
               <th>Finish Time</th>
               <th>Shift</th>
               <th>Rider</th>
-              <th>Phone</th>
-              <th>Status</th>
+              <th>Username</th>
+              <th>Driver</th>
           </thead>
           <!-- Empty body, initially -->
         <tbody id="body">
@@ -177,35 +178,7 @@
 
       <div id ="result"></div>
 
-    <!-- Loading in updated requests from the Django database -->
-      <h2>Updated List of Requests From DataBase:</h2>
-      <table class = "tableContent" id="table">
-          <thead>
-              <th>Request DB ID#</th>
-              <th>Starting Position</th>
-              <th>Finishing Position</th>
-              <th>Pick Up Time</th>
-              <th>Duration</th>
-              <th>Rider</th>
-              <th>Phone #</th>
-              <th>Status</th>
-              <th></th>
-          </thead>
-          {% for Ride in Rides %}
-      <tr>
-          <td><a href="update/{{ Ride.id }}">{{ Ride.id }}</a></td>
-          <td>{{ Ride.origin }}</td>
-          <td>{{ Ride.destination }}</td>
-          <td>{{ Ride.time }}</td>
-          <td>{{ Ride.trip_duration }}</td>
-          <td>{{ Ride.rider_name }}</td>
-          <td>{{ Ride.contact_number }}</td>
-          <td>{{ Ride.ride_status }}</td>
-      </tr>
-      {% endfor %}
-      </table>
-
-      <script type="module" src="/static/simulateExisting.js"></script>
+      <script type="module" src="/static/MultiSimulateExisting.js"></script>
       <script type="module" src="/static/graphNew.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKuXI2x-m6OtzH6kbcBMRYcz9xoQ-BcLQ&libraries=places"></script>
       </script>

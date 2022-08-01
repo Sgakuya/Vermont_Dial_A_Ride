@@ -1,0 +1,225 @@
+<!-- I don't think we need this either? -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+  {% load static %}
+    <meta charset="utf-8">
+    <!-- Loading bootstrap, fonts, icons, the google api, the barstyle, and general style -->
+    <link  rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/b7cdb1395c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'barStyle.css'%}">
+  <link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+  <link rel="stylesheet" href="{% static 'Table.css'%}">
+    <title>Request Update</title>
+
+    <style>
+
+      /*
+      Styling for the table, giving it a clean look
+      */
+      .tableContent{
+          width: 90%;
+          margin:25px 0;
+          margin-left: 2%;
+          border-collapse:collapse;
+          font-family: "Monaco";
+          font-size: 0.8em;
+          min-width: 400px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .tableContent thead tr{
+          color: white;
+          background: #333333;
+          padding: 10% 10%;
+          text-align: left;
+          font-weight: bold;
+      }
+
+      .tableContent th,
+      .tableContent td{
+          text-align: left;
+          padding: 12px 0px;
+      }
+
+      .tableContent tbody tr{
+          border-bottom: 1px solid #dddddd;
+      }
+
+      .tableContent tbody tr:nth-of-type(even){
+          background-color: #f3f3f3;
+      }
+
+      .tableContent tbody tr:last-of-type{
+          border-bottom: 2px solid #333333;
+      }
+
+      .topLeft{
+          border-top-left-radius: 1%;
+      }
+
+      .topRight{
+          border-top-right-radius: 1%;
+      }
+
+
+      .delete{
+      width: 70%;
+      /* padding: 12px 20px; */
+
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+
+      background-color: red;
+      color:white;
+      cursor: pointer;
+      }
+
+      .delete::before{
+          content: '';
+        z-index: -1;
+        background: #e7e7e7;
+        -webkit-clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+        clip-path: polygon(20% 30%, 0 30%, 0 50%, 0 70%, 20% 70%, 50% 70%, 80% 70%, 100% 70%, 100% 50%, 100% 30%, 80% 30%, 50% 30%);
+        transition: clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), -webkit-clip-path 0.4s cubic-bezier(0.3, 1, 0.2, 1), transform 0.4s cubic-bezier(0.3, 1, 0.2, 1), background 0.4s ease;
+      }
+
+      .delete:hover{
+          background-color: darkred;
+      }
+
+      h2{
+          margin-left: 2%;
+          font-family: "Monaco";
+          text-decoration: underline;
+      }
+
+      p{
+          margin-left: 2%;
+          font-family: "Monaco";
+      }
+
+      h4{
+          font-family: "Monaco";
+          color: #dddddd;
+      }
+
+      </style>
+  </head>
+
+
+    <body>
+        <!-- Search bar -->
+    <!-- Search bar -->
+      <ul>
+          <li><a href="DispatcherInterface.html">Go Back</a></li>
+          <li><a href="RequestPage.html">View All The Requests</a></li>
+          <li><a href="simulation.html">Run Simulation</a></li>
+          <li><a href="SimulateExisiting.html">Get Schedule</a></li>
+
+          <!--Line below makes button to link multidriver content, commented due to incompletion-->
+          <li><a href="MultiDriver.html">MultiDriver</a></li>
+        </ul>
+
+    <h1>Update Request</h1>
+
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <form method = "POST", class="form-horizontal" action="updaterecord/{{Ride.id}}">
+                <!-- For the origin -->
+                <div class="form-group">
+                    <label for="from">Rider origin</label>
+                    <input type="text" id="from" name="origin" value="{{Ride.origin}}"
+                    class="form-control" readonly>
+                </div>
+
+                <!-- For the destination -->
+                <div class="form-group">
+                    <label for="to">Rider destination</i></label>
+                    <input type="text" name="destination" id="to" value="{{Ride.destination}}"
+                    class="form-control" readonly>
+                </div>
+
+                <!-- for the users name -->
+                <div class="form-group">
+                    <label for="to">Passenger's name: </label>
+                    <input type="text" name="rider_name" id="to" value="{{Ride.rider_name}}"
+                    class="form-control" readonly></p>
+                </div>
+
+                <!-- for the users phone no -->
+                <div class="form-group">
+                    <label for="to">Passenger's phone number: </label>
+                    <input type="text" name="contact_number" id="to" value="{{Ride.contact_number}}"
+                    class="form-control" readonly></p>
+                </div>
+
+                 <!--for the date and pickup/dropoff time-->
+                <!-- <div class="form-group">-->
+                <!--        <label for="to">Edit picktime?</label>-->
+                <!--        <input type="checkbox" name= "time" id="to" class="form-control" value={{Ride.time}}>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                        <label for="to">Requested pickup time: {{Ride.time}}</label>
+                        <p><i> Change Picktime below: </i></p>
+                        <input type="datetime-local" name= "time" id="to" class="form-control" value={{Ride.time}} >
+                </div>
+
+                 <!--round trip-->
+                <input type="hidden" name="roundtrip" id="to" class="form-control" value={{Ride.roundtrip}} readonly>
+
+                 <!--Roundtrip time:-->
+                <input type="datetime-local" name= "rtime" id="to" class="form-control" value={{Ride.rtime}} readonly>
+
+                 <!--confirm if rider is ok with sharing ride-->
+                <input type="hidden" name="share" id="to" class="form-control" value={{Ride.share}} readonly>
+
+                 <!--mobility needs-->
+                <div class="form-group">
+                    <label for="needs">Rider's mobility needs </label>
+                    <input type="text" name="needs" id="to"
+                    class="form-control" value={{Ride.needs}} readonly></p>
+                </div>
+
+                <input type="hidden" name="trip_duration" id="duration" name="duration" class="form-control"></p>
+
+                 <!--ride status-->
+                <div class="form-group">
+                    <label for="needs">Ride status </label>
+                    <input type="text" name="ride_status" id="to" name="ride_status" class="form-control" value={{Ride.ride_status}}
+                    required>
+                </div>
+                <input type="hidden" name="csrfmiddlewaretoken" value="CMLA4MsfWvQlxwUdltbDzxingTIouiDkxLCOJw8sIm1uov8WsuRa5fx9Ta3W6aiq">
+
+                {% csrf_token %}
+                <div style = "position:absolute;">
+                    <input type="submit" class="btn btn-success btn-lg" value="Submit" onclick = "showAlert();" style="visibility:visible;" id="submit">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+        <script LANGUAGE="JavaScript">
+        function btnSubmit()
+        {
+            {document.getElementById("submit").style.visibility="visible";}
+
+        }
+        </script>
+        <script>
+        function showAlert() {
+        alert ("Request has been edited!");
+        }
+        </script>
+
+    </body>
+</html>

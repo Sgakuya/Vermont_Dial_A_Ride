@@ -1,0 +1,119 @@
+<!-- The simulate random page, this pulls on MultiSimulateRandom.js, as well as
+    graph.js and request.js which use a hard coded graph of set locations in vermont
+    to test our algorithm
+    The user has the option to generate X number of random requests and Y number of drivers, the algorithm is
+    then run on those requests with the specified radom drivers-->
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'DispatcherStyle.css'%}">
+    <link rel="stylesheet" href="{% static 'Table.css'%}">
+    <style>
+
+        .submitButton{
+            width: 10%;
+            padding: 6px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 2%;
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        .submitButton:hover{
+            background-color: #111111;
+        }
+
+        input[type=number]{
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 2%;
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+        }
+
+        input[type=number]:hover{
+            background-color: #111111;
+        }
+
+        p{
+            margin-left: 2%;
+            font-family: "Monaco";
+            width: 100%;
+        }
+
+
+    </style>
+    <title>Simulation On Random Requests</title>
+    <link rel="stylesheet" href="{% static 'DispatcherStyle.css' %}">
+</head>
+
+<body>
+    <!-- Search bar -->
+    <ul>
+        <li><a href="simulation.html">Go Back</a></li>
+        <li><a href="RequestPage.html">View All The Requests</a></li>
+        <li><a href="simulation.html">Run Simulation</a></li>
+        <li><a href="SimulateExisiting.html">Get Schedule</a></li>
+        <li><a href="MultiDriver.html">MultiDriver</a></li>
+      </ul>
+
+      <!-- input for random request, user only submits the number that they want to generate
+        based on changes to the graph class, this may no longer function properly
+    -->
+      <p>How many random requests do you want to generate: <br></p>
+      <input type="number" name="num" id="num">
+      <button id = "create" class="submitButton">Create</button>
+      <p>How many drivers do you want to generate: <br></p>
+      <input type="number" name="numDr" id="numDr">
+      <button id = "createDr" class="submitButton">Generate</button>
+      <button id = "run" class="submitButton">Run</button>
+
+
+     <!-- Currently commenting out the option for the dispatcher to change their location
+            but for the future this will need to be stored as input -->
+      <!-- <p>Driver Origin</p>
+      <div class="form-group">
+        <label for="from"><i class="far fa-dot-circle"></i></label>
+        <input type="text" id="from" placeholder="Origin" class="form-control">
+        </div> -->
+
+      <p id="demo"></p>
+
+      <h2>Served Requests:</h2>
+      <table class = "tableContent" id="table">
+          <thead>
+              <th>Request #</th>
+              <th>Starting Position</th>
+              <th>Finishing Position</th>
+              <th>Pick Up Time</th>
+              <th>Finish Time</th>
+              <th>Shifted</th>
+              <th>Driver</th>
+          </thead>
+          <!-- Empty body, initially -->
+        <tbody id="body">
+              <tr>
+              </tr>
+        </tbody>
+      </table>
+
+      <script type="module" src="/static/MultiSimulateRandom.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKuXI2x-m6OtzH6kbcBMRYcz9xoQ-BcLQ&libraries=places"></script>
+
+
+</body>
+
+</html>

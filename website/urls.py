@@ -29,7 +29,8 @@ urlpatterns = [
     path("MultiDriver.html", views.multiDriver, name="multiDriver"),
     path("MultiSimulateRandom.html", views.mulSimRand, name="mulSimRand"),
     path("MultiSimulateExisting.html", views.mulSimEx, name="mulSimEx"),
+    path("update/<int:pk>", views.update, name="update"),
+    path("update/updaterecord/<int:pk>", views.updaterecord, name="updaterecord"),
     url(r'^delete/(?P<pk>\d+)$', delete_post, name="delete_post"),
     url(r'^deleteDisp/(?P<pk>\d+)$', delete_post2, name="delete_post2"),
-    #path("UserRequestPage.html", views.delete_post, name="delete_post"),
 ]
