@@ -1,4 +1,5 @@
-###### Vermont Dial a Ride Preliminary Website #####
+Vermont Dial a Ride Preliminary Web Application
+--
 
 Using a combination of routing algorithms, API calls, and django to change the current dial a ride system in Vermont.
   
