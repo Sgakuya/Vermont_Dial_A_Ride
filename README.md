@@ -19,9 +19,11 @@ For Usage, visit the page: [Dial-A-Ride_Vermont](sgakuya.pythonanywhere.com)
 2. On the menu bar you will note you have the option to view ride requests, run simulations and create schedules
 
 
-To create a local copy on your desktop, watch this video: [(https://youtu.be/xSqp2LjHDFg)]
+To create a local copy on your desktop, watch this video: [GitHub to Website Demo](https://youtu.be/xSqp2LjHDFg)
+
 For more background on the algorithm and website details, visit this link for a holistic overview of motivation and development: 
-> [Background_Midd-Sharepoint](https://middleburycollege-my.sharepoint.com/:w:/g/personal/llorenz_middlebury_edu/EaSkns-D_-VAr100pDSxGQUBfWzqhgjjsc0GV7KVXT_6TA?e=Veyvdy)
+> [Background_Midd-Sharepoint](https://middleburycollege-my.sharepoint.com/:w:/g/personal/llorenz_middlebury_edu/EaSkns-D_-VAr100pDSxGQUBfWzqhgjjsc0GV7KVXT_6TA?e=Veyvdy)   
+
 Much of the link above touches on java code written to develop these algorithms, the files to these are located here:   
 > [DAR Single-Driver Optimization](https://github.com/llorenz29/1D-Dial-A-Ride-Optimization)   
 > [DAR Multi-Driver & Other Algorithms](https://github.com/Sgakuya/DAR_Algorithms)   
