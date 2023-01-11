@@ -1,13 +1,16 @@
 # VERMONT DIAL-A-RIDE PRELIMINARY WEB APP
 
-## Authors:
+Using a combination of routing algorithms, API calls, and django to change the current dial a ride system in Vermont.
+
+## Author: 
 Smith Gakuya
+
+## Collaborators:
 Luke Lorenz
 Haiyu Luo
 Asif Islam
 Prof. Ananya Christman - Middlebury College CS Dept.
 
-Using a combination of routing algorithms, API calls, and django to change the current dial a ride system in Vermont.
   
 ## Background
 This is a Dial-A-Ride Optimization problem tailored to the state of Vermont’s transit needs. Currently, there is no website or algorithm in place were users can submit requests to be picked up by a dial a ride driver in Vermont. We hope to change that with a website that can handle requests, and efficiently schedule a path that efficiently maximizes the number of requests each driver can serve.
