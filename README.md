@@ -6,10 +6,10 @@ Using a combination of routing algorithms, API calls, and django to change the c
 Smith Gakuya
 
 ## Collaborators:
-Luke Lorenz
-Haiyu Luo
-Asif Islam
-Prof. Ananya Christman - Middlebury College CS Dept.
+Luke Lorenz   
+Haiyu Luo   
+Asif Islam   
+Prof. Ananya Christman - Middlebury College CS Dept.    
 
   
 ## Background
