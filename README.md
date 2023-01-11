@@ -1,11 +1,18 @@
 # VERMONT DIAL-A-RIDE PRELIMINARY WEB APP
 
+## Authors:
+Smith Gakuya
+Luke Lorenz
+Haiyu Luo
+Asif Islam
+Prof. Ananya Christman - Middlebury College CS Dept.
+
 Using a combination of routing algorithms, API calls, and django to change the current dial a ride system in Vermont.
   
-# Background
+## Background
 This is a Dial-A-Ride Optimization problem tailored to the state of Vermont’s transit needs. Currently, there is no website or algorithm in place were users can submit requests to be picked up by a dial a ride driver in Vermont. We hope to change that with a website that can handle requests, and efficiently schedule a path that efficiently maximizes the number of requests each driver can serve.
   
-# Usage
+## Usage
 For Usage, visit the page: [Dial-A-Ride_Vermont](sgakuya.pythonanywhere.com) 
 
 ### Ride Request
@@ -15,8 +22,9 @@ For Usage, visit the page: [Dial-A-Ride_Vermont](sgakuya.pythonanywhere.com)
 
 ### Schedule Creation and Simulation
 1. Click on Dispatcher Login on the menu bar and login with the following credentials
-> Username : achristman       Password: password
-2. On the menu bar you will note you have the option to view ride requests, run simulations and create schedules
+> Username : achristman       
+> Password: password
+2. On the menu bar you will note you have the option to view ride requests, run simulations (from random or actual requests) and create schedules
 
 
 To create a local copy on your desktop, watch this video: [GitHub to Website Demo](https://youtu.be/xSqp2LjHDFg)
@@ -30,4 +38,6 @@ Much of the link above touches on java code written to develop these algorithms,
   
   
 An Aside: To access the link above, you must be a member of Middlebury College. I am currently working on a way arround a restricted shareable link. 
+
+
 
