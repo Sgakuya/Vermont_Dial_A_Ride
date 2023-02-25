@@ -1,6 +1,6 @@
 # VERMONT DIAL-A-RIDE PRELIMINARY WEB APP
 
-Using a combination of routing algorithms, API calls, and django to change the current dial a ride system in Vermont.
+A web application aimed to change the current dial a ride system in Vermont that uses a combination of routing algorithms, API calls, JavaScript and Django.
 
 ## Author: 
 Smith Gakuya
