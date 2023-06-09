@@ -42,5 +42,9 @@ Much of the link above touches on java code written to develop these algorithms,
   
 An Aside: To access the link above, you must be a member of Middlebury College. I am currently working on a way arround a restricted shareable link. 
 
-
+<img width="1440" alt="Welcome Page, index" src="https://github.com/Sgakuya/Vermont_Dial_A_Ride/assets/61175297/76542884-ab81-4555-ad43-cb5d7dd33545">
+<img width="1440" alt="Rider Login" src="https://github.com/Sgakuya/Vermont_Dial_A_Ride/assets/61175297/69ee4ea3-d22d-44b1-8cf5-aea798435bf6">
+<img width="1440" alt="Rider Homepage" src="https://github.com/Sgakuya/Vermont_Dial_A_Ride/assets/61175297/ee355a25-cc07-4e9c-be30-0b5d47e8ebac">
+<img width="1440" alt="Ride Request" src="https://github.com/Sgakuya/Vermont_Dial_A_Ride/assets/61175297/b69f8054-a113-4672-b417-af72f77b3eed">
+<img width="1440" alt="Dispatcher Schedule" src="https://github.com/Sgakuya/Vermont_Dial_A_Ride/assets/61175297/6f02ebc9-f7d8-4e50-afb3-74a31f0a2fb9">
 
